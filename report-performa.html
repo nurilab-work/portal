@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="id"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Recap Performa · Nurilab</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#1F2A44;--ink:#1d2433;--muted:#6b7385;--line:#e6e9f0;--bg:#f6f7fa;--orange:#F26B1D;--win:#1E7B34;--winbg:#E3F3E7;--med:#8A6100;--medbg:#FFF1CC;--bad:#C0392B;--badbg:#FBE0DD;
+--shopee:#EE4D2D;--tiktok:#1d2433;--meta:#2a78d6;--tt2:#25b5b0}
+*{box-sizing:border-box}
+body{margin:0;font-family:Poppins,system-ui,sans-serif;color:var(--ink);background:var(--bg);font-size:15px;line-height:1.55}
+header{background:var(--navy);color:#fff;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px 20px;flex-wrap:wrap}
+header .brand{font-weight:700;letter-spacing:.18em;font-size:11px;opacity:.75}
+header h1{margin:2px 0 0;font-size:18px;font-weight:600}
+header .r{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+header a{color:#cfd4e0;font-size:13px;text-decoration:none}header a:hover{color:#fff}
+header select{font:inherit;font-size:13px;font-weight:600;border:0;border-radius:99px;padding:7px 14px;background:#fff;color:var(--navy);cursor:pointer}
+.note{background:#FFF1CC;color:#6b5a12;font-size:12.5px;text-align:center;padding:7px 14px}
+.progress{position:sticky;top:0;z-index:5;background:#fff;border-bottom:1px solid var(--line)}
+.bar{height:3px;background:var(--line)}.bar i{display:block;height:100%;background:var(--orange);transition:width .25s}
+.dots{display:flex;gap:6px;padding:10px 20px;overflow-x:auto;scrollbar-width:none}
+.dots button{flex:0 0 auto;border:1px solid var(--line);background:#fff;border-radius:99px;height:30px;padding:0 11px;font:inherit;font-size:12px;font-weight:600;color:var(--muted);cursor:pointer}
+.dots button.done{background:#f0f2f6;color:var(--navy);border-color:transparent}
+.dots button.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+main{max-width:980px;margin:0 auto;padding:24px 16px 110px}
+.s{display:none}.s.on{display:block;animation:fade .2s ease}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.kicker{font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+h2{font-size:27px;line-height:1.25;margin:6px 0 6px;color:var(--navy)}
+.sub{color:var(--muted);margin:0 0 18px;max-width:720px}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px 20px}
+.means{background:#fff;border-left:4px solid var(--orange);border-radius:0;padding:12px 16px;margin-top:16px;font-size:15px}
+.means b{color:var(--navy)}.means span{display:block}.means span+span{margin-top:5px}
+.tiles{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(100%,165px),1fr))}
+.tile .l{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.tile .v{font-size:clamp(20px,2.4vw,28px);white-space:nowrap;font-weight:700;color:var(--navy);line-height:1.2;margin-top:4px;font-variant-numeric:tabular-nums}
+.tile .s2{font-size:12.5px;color:var(--muted)}
+.dl{display:inline-block;font-size:12px;font-weight:700;border-radius:99px;padding:1px 8px;margin-left:4px}
+.up{background:var(--winbg);color:var(--win)}.dn{background:var(--badbg);color:var(--bad)}.fl{background:#ECEEF2;color:var(--muted)}
+.hint{display:inline-block;font-size:12px;color:var(--muted);background:#fff;border:1px dashed var(--line);border-radius:99px;padding:3px 12px;margin-top:10px}
+.ctrl{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:12px}
+.ctrl select,.ctrl button{font:inherit;font-size:12.5px;font-weight:600;border:1px solid var(--line);background:#fff;border-radius:99px;padding:6px 13px;color:var(--ink);cursor:pointer}
+.ctrl button.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+.tog button{display:inline-flex;align-items:center;gap:7px;background:#fff!important;color:var(--muted)!important;border-color:var(--line)!important;opacity:.55}
+.tog button.on{opacity:1;color:var(--ink)!important;border-color:var(--navy)!important;box-shadow:0 0 0 1px var(--navy) inset}
+.tog button i.ln{display:inline-block;width:16px;height:3px;border-radius:2px}
+.leg{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:12.5px;color:var(--muted);margin:0 0 6px}
+.leg i{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.leg i.ln{height:3px;border-radius:2px;vertical-align:3px;width:16px}
+.chart{position:relative}
+.chart svg{width:100%;height:auto;display:block;overflow:visible}
+.split .chart svg{max-width:250px;margin:0 auto}
+.tip{position:absolute;pointer-events:none;background:var(--navy);color:#fff;font-size:12px;border-radius:8px;padding:7px 10px;white-space:nowrap;opacity:0;transition:opacity .1s;z-index:3}
+.tip b{display:block;font-size:12px;margin-bottom:2px}
+.draw{stroke-dasharray:1;stroke-dashoffset:1;animation:dr 1.1s ease forwards}
+@keyframes dr{to{stroke-dashoffset:0}}
+.grow{animation:gw .8s ease both}@keyframes gw{from{width:0}}
+.pop{animation:pp .6s ease both}@keyframes pp{from{opacity:0;transform:scaleY(.2)}to{opacity:1;transform:none}}
+.hb{display:grid;grid-template-columns:minmax(0,1.1fr) 2fr 120px;gap:12px;align-items:center;margin:12px 0;font-size:14px}
+.hb .n{font-weight:600;color:var(--navy);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.hb .n small{display:block;font-weight:500;color:var(--muted);font-size:12px}
+.hb .tr{position:relative;height:26px;background:var(--bg);border-radius:7px}
+.hb .fi{height:100%;border-radius:7px}
+.hb .tr.two{height:32px;background:none}.hb .tr.two .fi{height:22px}.hb .lw{height:6px;margin-top:4px;border-radius:4px;background:#c9ced8}
+.hb.tot{border-bottom:1px dashed var(--line);padding-bottom:12px}.hb.tot .n{font-size:15px}
+.gapnote{font-size:12px;color:var(--muted);margin-top:6px}
+.hb .mk{position:absolute;top:-5px;bottom:-5px;width:3px;background:var(--orange);border-radius:2px}
+.hb .v{text-align:right;font-weight:700;font-variant-numeric:tabular-nums}.hb .v small{display:block;font-weight:500;color:var(--muted);font-size:12px}
+.badge{display:inline-block;font-size:12px;font-weight:700;border-radius:99px;padding:3px 11px}
+.b-naik{background:var(--winbg);color:var(--win)}.b-tahan{background:var(--medbg);color:var(--med)}.b-turun{background:var(--badbg);color:var(--bad)}.b-na{background:#ECEEF2;color:var(--muted)}
+.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:18px;align-items:center}
+.dleg{display:flex;flex-direction:column;gap:8px}
+.dleg button{display:flex;justify-content:space-between;gap:10px;align-items:center;font:inherit;font-size:14px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 14px;cursor:pointer;text-align:left}
+.dleg button.on{border-color:var(--navy);box-shadow:0 0 0 2px var(--navy) inset}
+.dleg button b{font-variant-numeric:tabular-nums}
+table{border-collapse:collapse;width:100%;font-size:13.5px}
+th{background:var(--navy);color:#fff;text-align:left;padding:9px 10px;font-weight:600;font-size:12px}
+td{padding:9px 10px;border-top:1px solid var(--line)}td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.tblw{overflow-x:auto;background:#fff;border:1px solid var(--line);border-radius:16px}
+.list{display:flex;flex-direction:column;gap:10px}
+.item{display:grid;grid-template-columns:34px 1fr;gap:12px;align-items:start;background:#fff;border:1px solid var(--line);border-radius:14px;padding:13px 16px;font-size:14.5px}
+.item .no{width:34px;height:34px;border-radius:50%;background:var(--navy);color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center}
+.item.nx .no{background:var(--orange)}
+details{background:#fff;border:1px solid var(--line);border-radius:14px;margin-top:10px}
+details summary{cursor:pointer;padding:12px 16px;font-weight:600;color:var(--navy);list-style:none}details summary::after{content:" ▾";color:var(--muted)}
+details[open] summary::after{content:" ▴"}details .in{padding:0 16px 14px}
+.sheetwrap{margin-top:20px;text-align:center}
+.sheet{display:inline-block;background:var(--orange);color:#fff;text-decoration:none;font-weight:700;font-size:15px;border-radius:99px;padding:13px 26px;box-shadow:0 10px 24px rgba(242,107,29,.25)}
+.sheet:hover{background:#d95a12}
+.nav{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid var(--line);z-index:6}
+.nav .in{max-width:980px;margin:0 auto;display:flex;gap:10px;align-items:center;padding:12px 16px}
+.nav .count{font-size:13px;color:var(--muted);margin-right:auto}
+.btn{border:0;border-radius:10px;padding:10px 18px;font:inherit;font-weight:600;font-size:14px;cursor:pointer}
+.btn.prev{background:var(--bg);color:var(--navy)}.btn.next{background:var(--navy);color:#fff}.btn:disabled{opacity:.35;cursor:default}
+@media(max-width:900px){.split{grid-template-columns:1fr}}
+@media(max-width:640px){h2{font-size:22px}.tile .v{font-size:24px}.hb{grid-template-columns:minmax(0,1fr) 1.2fr 92px;font-size:13px}header h1{font-size:16px}main{padding:18px 12px 100px}.card{padding:14px}}
+</style></head><body>
+<header><div><div class="brand">NURILAB · RECAP PERFORMA</div><h1>Recap Performa Mingguan</h1></div>
+<div class="r"><select id="wk" aria-label="Pilih minggu"></select><a href="index.html">← Beranda</a></div></header>
+<div class="note" id="note"></div>
+<div class="progress"><div class="bar"><i id="bar"></i></div><div class="dots" id="dots"></div></div>
+<main id="main"></main>
+<div class="nav"><div class="in"><span class="count" id="count"></span><button class="btn prev" id="prev">← Sebelumnya</button><button class="btn next" id="next">Lanjut →</button></div></div>
+<script>
+const D = {"sheet": "https://docs.google.com/spreadsheets/d/1Q2L-Gjr4MWT8YQG64j8BE3FRvC-5xYCvexoeqirBrIg/edit?usp=sharing", "days": [{"d": "2026-08-01", "rs": 31983500.0, "rt": 77995339.0, "rw": 0.0, "cx": 2457069.0, "os": 490.0, "ot": 2105.0, "sp": {"Meta CPAS": 1812055.0, "Meta LP": 0.0, "Meta Traffic/Boost": 1850362.0, "Shopee Ads": 4771497.0, "TikTok GMV Max": 10738080.0, "TikTok Ads": 2458912.0}, "g": {"Meta CPAS": 6302000.0, "Shopee Ads": 32727335.0, "TikTok GMV Max": 83724856.0}, "kol": 0.0, "aff": 0.0}, {"d": "2026-08-02", "rs": 28374999.0, "rt": 44068169.0, "rw": 0.0, "cx": 2315778.0, "os": 470.0, "ot": 1085.0, "sp": {"Meta CPAS": 523065.0, "Meta LP": 0.0, "Meta Traffic/Boost": 2089712.0, "Shopee Ads": 4041375.0, "TikTok GMV Max": 6816382.0, "TikTok Ads": 2669971.0}, "g": {"Meta CPAS": 5060000.0, "Shopee Ads": 29041335.0, "TikTok GMV Max": 46899986.0}, "kol": 0.0, "aff": 0.0}, {"d": "2026-08-03", "rs": 24319389.0, "rt": 32075683.0, "rw": 0.0, "cx": 2960643.0, "os": 371.0, "ot": 596.0, "sp": {"Meta CPAS": 549562.0, "Meta LP": 0.0, "Meta Traffic/Boost": 1888610.0, "Shopee Ads": 3958279.0, "TikTok GMV Max": 6884737.0, "TikTok Ads": 2015607.0}, "g": {"Meta CPAS": 2897000.0, "Shopee Ads": 22577092.0, "TikTok GMV Max": 33719244.0}, "kol": 0.0, "aff": 0.0}, {"d": "2026-08-04", "rs": 19614392.0, "rt": 28602550.0, "rw": 0.0, "cx": 3458353.0, "os": 276.0, "ot": 501.0, "sp": {"Meta CPAS": 738773.0, "Meta LP": 0.0, "Meta Traffic/Boost": 2268447.0, "Shopee Ads": 3330075.0, "TikTok GMV Max": 6288006.0, "TikTok Ads": 2444720.0}, "g": {"Meta CPAS": 2742000.0, "Shopee Ads": 19521401.0, "TikTok GMV Max": 30972702.0}, "kol": 0.0, "aff": 0.0}, {"d": "2026-08-05", "rs": 24100265.0, "rt": 26043824.0, "rw": 0.0, "cx": 1880380.0, "os": 368.0, "ot": 449.0, "sp": {"Meta CPAS": 757289.0, "Meta LP": 0.0, "Meta Traffic/Boost": 2493908.0, "Shopee Ads": 3552831.0, "TikTok GMV Max": 5723944.0, "TikTok Ads": 2821915.0}, "g": {"Meta CPAS": 3665000.0, "Shopee Ads": 25109737.0, "TikTok GMV Max": 27170937.0}, "kol": 0.0, "aff": 0.0}, {"d": "2026-08-06", "rs": 26295102.0, "rt": 30081507.0, "rw": 0.0, "cx": 2095849.0, "os": 458.0, "ot": 497.0, "sp": {"Meta CPAS": 1101502.0, "Meta LP": 0.0, "Meta Traffic/Boost": 2362191.0, "Shopee Ads": 3627082.0, "TikTok GMV Max": 6355984.0, "TikTok Ads": 2318638.0}, "g": {"Meta CPAS": 6590881.0, "Shopee Ads": 27916577.0, "TikTok GMV Max": 31385911.0}, "kol": 0.0, "aff": 0.0}, {"d": "2026-08-07", "rs": 19734742.0, "rt": 36928728.0, "rw": 0.0, "cx": 2115352.0, "os": 334.0, "ot": 682.0, "sp": {"Meta CPAS": 1099935.0, "Meta LP": 0.0, "Meta Traffic/Boost": 2412932.0, "Shopee Ads": 2978911.0, "TikTok GMV Max": 8142482.0, "TikTok Ads": 2307995.0}, "g": {"Meta CPAS": 4537887.0, "Shopee Ads": 21264822.0, "TikTok GMV Max": 39010854.0}, "kol": 0.0, "aff": 0.0}, {"d": "2026-08-08", "rs": 83057480.0, "rt": 55779294.0, "rw": 0.0, "cx": 6230505.0, "os": 1000.0, "ot": 772.0, "sp": {"Meta CPAS": 1913019.0, "Meta LP": 0.0, "Meta Traffic/Boost": 2585011.0, "Shopee Ads": 8823845.0, "TikTok GMV Max": 14072942.0, "TikTok Ads": 2019954.0}, "g": {"Meta CPAS": 18344784.0, "Shopee Ads": 84152081.0, "TikTok GMV Max": 59556988.0}, "kol": 0.0, "aff": 0.0}, {"d": "2026-08-09", "rs": 30692000.0, "rt": 33976342.0, "rw": 0.0, "cx": 2468552.0, "os": 418.0, "ot": 509.0, "sp": {"Meta CPAS": 74060.0, "Meta LP": 0.0, "Meta Traffic/Boost": 695462.0, "Shopee Ads": 4486540.0, "TikTok GMV Max": 5301935.0, "TikTok Ads": 1863382.0}, "g": {"Meta CPAS": 5907782.0, "Shopee Ads": 29657700.0, "TikTok GMV Max": 37380202.0}, "kol": 0.0, "aff": 0.0}, {"d": "2026-08-10", "rs": 25630700.0, "rt": 32945111.0, "rw": 0.0, "cx": 4245617.0, "os": 305.0, "ot": 459.0, "sp": {"Meta CPAS": 207489.0, "Meta LP": 0.0, "Meta Traffic/Boost": 645407.0, "Shopee Ads": 3825469.0, "TikTok GMV Max": 5027346.0, "TikTok Ads": 1594126.0}, "g": {"Meta CPAS": 5393100.0, "Shopee Ads": 25824100.0, "TikTok GMV Max": 35044645.0}, "kol": 0.0, "aff": 0.0}, {"d": "2026-08-11", "rs": 27426496.0, "rt": 23727373.0, "rw": 0.0, "cx": 6452766.0, "os": 279.0, "ot": 331.0, "sp": {"Meta CPAS": 703038.0, "Meta LP": 0.0, "Meta Traffic/Boost": 625961.0, "Shopee Ads": 3553620.0, "TikTok GMV Max": 3721562.0, "TikTok Ads": 1581845.0}, "g": {"Meta CPAS": 3769500.0, "Shopee Ads": 25844497.0, "TikTok GMV Max": 25816275.0}, "kol": 0.0, "aff": 0.0}, {"d": "2026-08-12", "rs": 23517000.0, "rt": 24301523.0, "rw": 0.0, "cx": 2439728.0, "os": 274.0, "ot": 303.0, "sp": {"Meta CPAS": 1455722.0, "Meta LP": 0.0, "Meta Traffic/Boost": 594199.0, "Shopee Ads": 3356868.0, "TikTok GMV Max": 3895568.0, "TikTok Ads": 1529233.0}, "g": {"Meta CPAS": 5138600.0, "Shopee Ads": 24606000.0, "TikTok GMV Max": 25094729.0}, "kol": 0.0, "aff": 0.0}, {"d": "2026-08-13", "rs": 21767998.0, "rt": 23351602.0, "rw": 0.0, "cx": 3491296.0, "os": 251.0, "ot": 327.0, "sp": {"Meta CPAS": 1907039.0, "Meta LP": 0.0, "Meta Traffic/Boost": 685013.0, "Shopee Ads": 3027282.0, "TikTok GMV Max": 4185352.0, "TikTok Ads": 1558863.0}, "g": {"Meta CPAS": 3573000.0, "Shopee Ads": 21002999.0, "TikTok GMV Max": 24360755.0}, "kol": 0.0, "aff": 0.0}, {"d": "2026-08-14", "rs": 20550500.0, "rt": 24760747.0, "rw": 0.0, "cx": 2438378.0, "os": 232.0, "ot": 342.0, "sp": {"Meta CPAS": 2029226.0, "Meta LP": 0.0, "Meta Traffic/Boost": 674972.0, "Shopee Ads": 3291973.0, "TikTok GMV Max": 4039699.0, "TikTok Ads": 1754393.0}, "g": {"Meta CPAS": 4669000.0, "Shopee Ads": 21063499.0, "TikTok GMV Max": 25212565.0}, "kol": 0.0, "aff": 0.0}, {"d": "2026-08-15", "rs": 23167999.0, "rt": 25687186.0, "rw": 0.0, "cx": 4236058.0, "os": 245.0, "ot": 359.0, "sp": {"Meta CPAS": 1879912.0, "Meta LP": 0.0, "Meta Traffic/Boost": 677231.0, "Shopee Ads": 3937150.0, "TikTok GMV Max": 4135312.0, "TikTok Ads": 1489472.0}, "g": {"Meta CPAS": 5189000.0, "Shopee Ads": 24936903.0, "TikTok GMV Max": 26024616.0}, "kol": 0.0, "aff": 0.0}, {"d": "2026-08-16", "rs": 15398000.0, "rt": 25094906.0, "rw": 0.0, "cx": 1652407.0, "os": 181.0, "ot": 341.0, "sp": {"Meta CPAS": 1417950.0, "Meta LP": 0.0, "Meta Traffic/Boost": 638727.0, "Shopee Ads": 2288894.0, "TikTok GMV Max": 3879553.0, "TikTok Ads": 1475586.0}, "g": {"Meta CPAS": 4007000.0, "Shopee Ads": 15653000.0, "TikTok GMV Max": 25266425.0}, "kol": 0.0, "aff": 0.0}, {"d": "2026-08-17", "rs": 33306500.0, "rt": 30414379.0, "rw": 0.0, "cx": 4663174.0, "os": 349.0, "ot": 385.0, "sp": {"Meta CPAS": 1533623.0, "Meta LP": 0.0, "Meta Traffic/Boost": 770724.0, "Shopee Ads": 4532047.0, "TikTok GMV Max": 4635164.0, "TikTok Ads": 1497272.0}, "g": {"Meta CPAS": 6523700.0, "Shopee Ads": 35401000.0, "TikTok GMV Max": 28624255.0}, "kol": 0.0, "aff": 0.0}, {"d": "2026-08-18", "rs": 20382860.0, "rt": 26563361.0, "rw": 0.0, "cx": 1634320.0, "os": 206.0, "ot": 359.0, "sp": {"Meta CPAS": 1136021.0, "Meta LP": 0.0, "Meta Traffic/Boost": 658249.0, "Shopee Ads": 3347583.0, "TikTok GMV Max": 4213256.0, "TikTok Ads": 1054306.0}, "g": {"Meta CPAS": 3957900.0, "Shopee Ads": 20303740.0, "TikTok GMV Max": 26064517.0}, "kol": 0.0, "aff": 0.0}, {"d": "2026-08-19", "rs": 22046380.0, "rt": 25161016.0, "rw": 0.0, "cx": 2277633.0, "os": 242.0, "ot": 332.0, "sp": {"Meta CPAS": 1394209.0, "Meta LP": 0.0, "Meta Traffic/Boost": 634975.0, "Shopee Ads": 3648144.0, "TikTok GMV Max": 3943108.0, "TikTok Ads": 1068727.0}, "g": {"Meta CPAS": 5804180.0, "Shopee Ads": 24568206.0, "TikTok GMV Max": 23688489.0}, "kol": 0.0, "aff": 0.0}, {"d": "2026-08-20", "rs": 20696860.0, "rt": 20288732.0, "rw": 0.0, "cx": 4233008.0, "os": 214.0, "ot": 256.0, "sp": {"Meta CPAS": 1173398.0, "Meta LP": 0.0, "Meta Traffic/Boost": 919643.0, "Shopee Ads": 2183371.0, "TikTok GMV Max": 3526230.0, "TikTok Ads": 1555839.0}, "g": {"Meta CPAS": 4169160.0, "Shopee Ads": 12999080.0, "TikTok GMV Max": 21074690.0}, "kol": 0.0, "aff": 0.0}, {"d": "2026-08-21", "rs": 17899980.0, "rt": 21426896.0, "rw": 0.0, "cx": 1675904.0, "os": 214.0, "ot": 258.0, "sp": {"Meta CPAS": 1079910.0, "Meta LP": 0.0, "Meta Traffic/Boost": 1121668.0, "Shopee Ads": 3541525.0, "TikTok GMV Max": 3775327.0, "TikTok Ads": 1623133.0}, "g": {"Meta CPAS": 3588600.0, "Shopee Ads": 19282900.0, "TikTok GMV Max": 21751179.0}, "kol": 0.0, "aff": 0.0}, {"d": "2026-08-22", "rs": 15884680.0, "rt": 26271454.0, "rw": 0.0, "cx": 1471600.0, "os": 194.0, "ot": 335.0, "sp": {"Meta CPAS": 1363104.0, "Meta LP": 0.0, "Meta Traffic/Boost": 1075754.0, "Shopee Ads": 3305603.0, "TikTok GMV Max": 4486195.0, "TikTok Ads": 1626287.0}, "g": {"Meta CPAS": 4116800.0, "Shopee Ads": 16919820.0, "TikTok GMV Max": 26193041.0}, "kol": 0.0, "aff": 0.0}, {"d": "2026-08-23", "rs": 24944560.0, "rt": 33559055.0, "rw": 0.0, "cx": 3906479.0, "os": 265.0, "ot": 428.0, "sp": {"Meta CPAS": 734385.0, "Meta LP": 0.0, "Meta Traffic/Boost": 1109368.0, "Shopee Ads": 4480040.0, "TikTok GMV Max": 5708602.0, "TikTok Ads": 1732008.0}, "g": {"Meta CPAS": 5130280.0, "Shopee Ads": 25413060.0, "TikTok GMV Max": 34352294.0}, "kol": 0.0, "aff": 0.0}, {"d": "2026-08-24", "rs": 28323680.0, "rt": 48656277.0, "rw": 0.0, "cx": 5131386.0, "os": 339.0, "ot": 735.0, "sp": {"Meta CPAS": 1125360.0, "Meta LP": 0.0, "Meta Traffic/Boost": 1140043.0, "Shopee Ads": 4843700.0, "TikTok GMV Max": 9960596.0, "TikTok Ads": 2370640.0}, "g": {"Meta CPAS": 6726160.0, "Shopee Ads": 28073574.0, "TikTok GMV Max": 48608906.0}, "kol": 0.0, "aff": 0.0}, {"d": "2026-08-25", "rs": 79379400.0, "rt": 49534971.0, "rw": 0.0, "cx": 26331190.0, "os": 655.0, "ot": 698.0, "sp": {"Meta CPAS": 825568.0, "Meta LP": 0.0, "Meta Traffic/Boost": 1085634.0, "Shopee Ads": 7952227.0, "TikTok GMV Max": 10555136.0, "TikTok Ads": 2849470.0}, "g": {"Meta CPAS": 17175479.0, "Shopee Ads": 78298657.0, "TikTok GMV Max": 48782130.0}, "kol": 0.0, "aff": 0.0}, {"d": "2026-08-26", "rs": 30847960.0, "rt": 32711195.0, "rw": 0.0, "cx": 3252149.0, "os": 380.0, "ot": 457.0, "sp": {"Meta CPAS": 851144.0, "Meta LP": 0.0, "Meta Traffic/Boost": 970617.0, "Shopee Ads": 6810021.0, "TikTok GMV Max": 6092810.0, "TikTok Ads": 2158032.0}, "g": {"Meta CPAS": 6249920.0, "Shopee Ads": 27865300.0, "TikTok GMV Max": 31633576.0}, "kol": 0.0, "aff": 0.0}, {"d": "2026-08-27", "rs": 26291340.0, "rt": 27568121.0, "rw": 0.0, "cx": 1993131.0, "os": 333.0, "ot": 404.0, "sp": {"Meta CPAS": 1493628.0, "Meta LP": 0.0, "Meta Traffic/Boost": 1068614.0, "Shopee Ads": 7525656.0, "TikTok GMV Max": 5027805.0, "TikTok Ads": 2492821.0}, "g": {"Meta CPAS": 6266960.0, "Shopee Ads": 26130452.0, "TikTok GMV Max": 26791961.0}, "kol": 0.0, "aff": 0.0}, {"d": "2026-08-28", "rs": 29689160.0, "rt": 38145240.0, "rw": 0.0, "cx": 2688991.0, "os": 367.0, "ot": 528.0, "sp": {"Meta CPAS": 1613018.0, "Meta LP": 0.0, "Meta Traffic/Boost": 1094651.0, "Shopee Ads": 7501666.0, "TikTok GMV Max": 7007322.0, "TikTok Ads": 1728009.0}, "g": {"Meta CPAS": 6654200.0, "Shopee Ads": 27165288.0, "TikTok GMV Max": 37546176.0}, "kol": 0.0, "aff": 0.0}, {"d": "2026-08-29", "rs": 29237560.0, "rt": 32857629.0, "rw": 0.0, "cx": 3234499.0, "os": 342.0, "ot": 450.0, "sp": {"Meta CPAS": 1986216.0, "Meta LP": 0.0, "Meta Traffic/Boost": 1050950.0, "Shopee Ads": 7094884.0, "TikTok GMV Max": 5836380.0, "TikTok Ads": 1589606.0}, "g": {"Meta CPAS": 5739560.0, "Shopee Ads": 28469180.0, "TikTok GMV Max": 31380220.0}, "kol": 0.0, "aff": 0.0}, {"d": "2026-08-30", "rs": 28588580.0, "rt": 32744040.0, "rw": 0.0, "cx": 2688462.0, "os": 359.0, "ot": 462.0, "sp": {"Meta CPAS": 967108.0, "Meta LP": 0.0, "Meta Traffic/Boost": 1071885.0, "Shopee Ads": 7188842.0, "TikTok GMV Max": 5732759.0, "TikTok Ads": 1573816.0}, "g": {"Meta CPAS": 7103480.0, "Shopee Ads": 26971360.0, "TikTok GMV Max": 32137702.0}, "kol": 0.0, "aff": 0.0}, {"d": "2026-08-31", "rs": 27476400.0, "rt": 31889662.0, "rw": 0.0, "cx": 1954584.0, "os": 327.0, "ot": 443.0, "sp": {"Meta CPAS": 967541.0, "Meta LP": 0.0, "Meta Traffic/Boost": 961275.0, "Shopee Ads": 7116674.0, "TikTok GMV Max": 6027085.0, "TikTok Ads": 996128.0}, "g": {"Meta CPAS": 4831880.0, "Shopee Ads": 25561620.0, "TikTok GMV Max": 32427521.0}, "kol": 0.0, "aff": 0.0}, {"d": "2026-09-01", "rs": 27553980.0, "rt": 32808677.0, "rw": 0.0, "cx": 1470618.0, "os": 286.0, "ot": 444.0, "sp": {"Meta CPAS": 1264421.0, "Meta LP": 0.0, "Meta Traffic/Boost": 1790551.0, "Shopee Ads": 6324859.0, "TikTok GMV Max": 6951699.0, "TikTok Ads": 2688286.0}, "g": {"Meta CPAS": 5412759.0, "Shopee Ads": 26992000.0, "TikTok GMV Max": 33487303.0}, "kol": 0.0, "aff": 0.0}, {"d": "2026-09-02", "rs": 28298500.0, "rt": 21011948.0, "rw": 0.0, "cx": 2458570.0, "os": 315.0, "ot": 260.0, "sp": {"Meta CPAS": 1168071.0, "Meta LP": 0.0, "Meta Traffic/Boost": 1860375.0, "Shopee Ads": 6890865.0, "TikTok GMV Max": 4433822.0, "TikTok Ads": 2866671.0}, "g": {"Meta CPAS": 6824298.0, "Shopee Ads": 27152500.0, "TikTok GMV Max": 20288533.0}, "kol": 0.0, "aff": 0.0}, {"d": "2026-09-03", "rs": 24871000.0, "rt": 21468275.0, "rw": 0.0, "cx": 1669160.0, "os": 273.0, "ot": 274.0, "sp": {"Meta CPAS": 1329681.0, "Meta LP": 0.0, "Meta Traffic/Boost": 1719378.0, "Shopee Ads": 6012361.0, "TikTok GMV Max": 4450575.0, "TikTok Ads": 2789742.0}, "g": {"Meta CPAS": 3982198.0, "Shopee Ads": 23230000.0, "TikTok GMV Max": 20746754.0}, "kol": 0.0, "aff": 0.0}, {"d": "2026-09-04", "rs": 21989499.0, "rt": 23295984.0, "rw": 0.0, "cx": 2259052.0, "os": 252.0, "ot": 276.0, "sp": {"Meta CPAS": 1441240.0, "Meta LP": 0.0, "Meta Traffic/Boost": 2168027.0, "Shopee Ads": 5445307.0, "TikTok GMV Max": 5083605.0, "TikTok Ads": 2723637.0}, "g": {"Meta CPAS": 4493897.0, "Shopee Ads": 22224500.0, "TikTok GMV Max": 22884736.0}, "kol": 0.0, "aff": 0.0}, {"d": "2026-09-05", "rs": 23471500.0, "rt": 24138528.0, "rw": 0.0, "cx": 1662272.0, "os": 271.0, "ot": 312.0, "sp": {"Meta CPAS": 1942046.0, "Meta LP": 0.0, "Meta Traffic/Boost": 1752087.0, "Shopee Ads": 6062602.0, "TikTok GMV Max": 5472856.0, "TikTok Ads": 2685539.0}, "g": {"Meta CPAS": 5697993.0, "Shopee Ads": 25110500.0, "TikTok GMV Max": 23710716.0}, "kol": 0.0, "aff": 0.0}, {"d": "2026-09-06", "rs": 25561000.0, "rt": 26432936.0, "rw": 0.0, "cx": 2198820.0, "os": 267.0, "ot": 332.0, "sp": {"Meta CPAS": 1520313.0, "Meta LP": 0.0, "Meta Traffic/Boost": 1645836.0, "Shopee Ads": 5940279.0, "TikTok GMV Max": 5827191.0, "TikTok Ads": 2545936.0}, "g": {"Meta CPAS": 5693996.0, "Shopee Ads": 24282500.0, "TikTok GMV Max": 25493146.0}, "kol": 0.0, "aff": 0.0}, {"d": "2026-09-07", "rs": 19959000.0, "rt": 21357128.0, "rw": 0.0, "cx": 1738374.0, "os": 220.0, "ot": 253.0, "sp": {"Meta CPAS": 970443.0, "Meta LP": 0.0, "Meta Traffic/Boost": 1466639.0, "Shopee Ads": 4959304.0, "TikTok GMV Max": 4335156.0, "TikTok Ads": 2470619.0}, "g": {"Meta CPAS": 4879799.0, "Shopee Ads": 20048038.0, "TikTok GMV Max": 19727327.0}, "kol": 0.0, "aff": 0.0}, {"d": "2026-09-08", "rs": 37924000.0, "rt": 26146800.0, "rw": 0.0, "cx": 2008897.0, "os": 468.0, "ot": 352.0, "sp": {"Meta CPAS": 811882.0, "Meta LP": 0.0, "Meta Traffic/Boost": 1352115.0, "Shopee Ads": 7623985.0, "TikTok GMV Max": 5509974.0, "TikTok Ads": 1847592.0}, "g": {"Meta CPAS": 22099965.0, "Shopee Ads": 39591684.0, "TikTok GMV Max": 25006604.0}, "kol": 0.0, "aff": 0.0}, {"d": "2026-09-09", "rs": 85539500.0, "rt": 50650436.0, "rw": 0.0, "cx": 4978315.0, "os": 939.0, "ot": 684.0, "sp": {"Meta CPAS": 1224809.0, "Meta LP": 0.0, "Meta Traffic/Boost": 1260338.0, "Shopee Ads": 8376419.0, "TikTok GMV Max": 12361406.0, "TikTok Ads": 4326275.0}, "g": {"Meta CPAS": 57341252.0, "Shopee Ads": 62776038.0, "TikTok GMV Max": 51768057.0}, "kol": 0.0, "aff": 0.0}, {"d": "2026-09-10", "rs": 29864000.0, "rt": 27580242.0, "rw": 0.0, "cx": 3019590.0, "os": 362.0, "ot": 389.0, "sp": {"Meta CPAS": 1151992.0, "Meta LP": 0.0, "Meta Traffic/Boost": 730630.0, "Shopee Ads": 6411162.0, "TikTok GMV Max": 5221703.0, "TikTok Ads": 1465271.0}, "g": {"Meta CPAS": 17391071.0, "Shopee Ads": 29399500.0, "TikTok GMV Max": 26355298.0}, "kol": 0.0, "aff": 0.0}, {"d": "2026-09-11", "rs": 25137500.0, "rt": 17447459.0, "rw": 0.0, "cx": 1654277.0, "os": 277.0, "ot": 215.0, "sp": {"Meta CPAS": 1442399.0, "Meta LP": 0.0, "Meta Traffic/Boost": 708253.0, "Shopee Ads": 4701505.0, "TikTok GMV Max": 3713981.0, "TikTok Ads": 1410257.0}, "g": {"Meta CPAS": 4670392.0, "Shopee Ads": 18331000.0, "TikTok GMV Max": 17108663.0}, "kol": 0.0, "aff": 0.0}, {"d": "2026-09-12", "rs": 24032500.0, "rt": 26266468.0, "rw": 0.0, "cx": 2735894.0, "os": 246.0, "ot": 342.0, "sp": {"Meta CPAS": 1971803.0, "Meta LP": 0.0, "Meta Traffic/Boost": 734436.0, "Shopee Ads": 4910102.0, "TikTok GMV Max": 6159302.0, "TikTok Ads": 1295157.0}, "g": {"Meta CPAS": 5595989.0, "Shopee Ads": 22697500.0, "TikTok GMV Max": 26603364.0}, "kol": 0.0, "aff": 0.0}, {"d": "2026-09-13", "rs": 25438000.0, "rt": 29375925.0, "rw": 0.0, "cx": 1166197.0, "os": 270.0, "ot": 351.0, "sp": {"Meta CPAS": 1274104.0, "Meta LP": 0.0, "Meta Traffic/Boost": 695028.0, "Shopee Ads": 5137589.0, "TikTok GMV Max": 7008873.0, "TikTok Ads": 1381163.0}, "g": {"Meta CPAS": 5061999.0, "Shopee Ads": 23047292.0, "TikTok GMV Max": 29445715.0}, "kol": 0.0, "aff": 0.0}, {"d": "2026-09-14", "rs": 20943000.0, "rt": 21033271.0, "rw": 0.0, "cx": 1347920.0, "os": 255.0, "ot": 257.0, "sp": {"Meta CPAS": 617712.0, "Meta LP": 0.0, "Meta Traffic/Boost": 706675.0, "Shopee Ads": 3913398.0, "TikTok GMV Max": 4840383.0, "TikTok Ads": 1418369.0}, "g": {"Meta CPAS": 4341898.0, "Shopee Ads": 19371500.0, "TikTok GMV Max": 20553048.0}, "kol": 0.0, "aff": 0.0}, {"d": "2026-09-15", "rs": 21432000.0, "rt": 27434034.0, "rw": 0.0, "cx": 922300.0, "os": 259.0, "ot": 333.0, "sp": {"Meta CPAS": 1178659.0, "Meta LP": 0.0, "Meta Traffic/Boost": 687695.0, "Shopee Ads": 3412274.0, "TikTok GMV Max": 6410990.0, "TikTok Ads": 1382367.0}, "g": {"Meta CPAS": 3773299.0, "Shopee Ads": 16132164.0, "TikTok GMV Max": 27617427.0}, "kol": 0.0, "aff": 0.0}, {"d": "2026-09-16", "rs": 22065000.0, "rt": 29095854.0, "rw": 0.0, "cx": 1165637.0, "os": 264.0, "ot": 322.0, "sp": {"Meta CPAS": 1183853.0, "Meta LP": 0.0, "Meta Traffic/Boost": 696485.0, "Shopee Ads": 3941345.0, "TikTok GMV Max": 6439419.0, "TikTok Ads": 1397326.0}, "g": {"Meta CPAS": 5356997.0, "Shopee Ads": 19061258.0, "TikTok GMV Max": 26879853.0}, "kol": 0.0, "aff": 0.0}, {"d": "2026-09-17", "rs": 21323500.0, "rt": 26256421.0, "rw": 0.0, "cx": 2329210.0, "os": 241.0, "ot": 314.0, "sp": {"Meta CPAS": 1384609.0, "Meta LP": 0.0, "Meta Traffic/Boost": 684673.0, "Shopee Ads": 3854721.0, "TikTok GMV Max": 6461797.0, "TikTok Ads": 1275146.0}, "g": {"Meta CPAS": 4782698.0, "Shopee Ads": 18327500.0, "TikTok GMV Max": 27154032.0}, "kol": 0.0, "aff": 0.0}, {"d": "2026-09-18", "rs": 17493500.0, "rt": 25725160.0, "rw": 0.0, "cx": 2306496.0, "os": 207.0, "ot": 340.0, "sp": {"Meta CPAS": 1439462.0, "Meta LP": 0.0, "Meta Traffic/Boost": 833890.0, "Shopee Ads": 3809171.0, "TikTok GMV Max": 6266363.0, "TikTok Ads": 1403804.0}, "g": {"Meta CPAS": 3610096.0, "Shopee Ads": 16571000.0, "TikTok GMV Max": 25231975.0}, "kol": 0.0, "aff": 0.0}, {"d": "2026-09-19", "rs": 18577500.0, "rt": 26677619.0, "rw": 0.0, "cx": 1816244.0, "os": 225.0, "ot": 369.0, "sp": {"Meta CPAS": 1956315.0, "Meta LP": 0.0, "Meta Traffic/Boost": 752722.0, "Shopee Ads": 3661497.0, "TikTok GMV Max": 7049501.0, "TikTok Ads": 1530699.0}, "g": {"Meta CPAS": 4263300.0, "Shopee Ads": 16922500.0, "TikTok GMV Max": 27221209.0}, "kol": 0.0, "aff": 0.0}, {"d": "2026-09-20", "rs": 19873500.0, "rt": 37026526.0, "rw": 0.0, "cx": 1844068.0, "os": 234.0, "ot": 512.0, "sp": {"Meta CPAS": 1241913.0, "Meta LP": 0.0, "Meta Traffic/Boost": 1570462.0, "Shopee Ads": 3794575.0, "TikTok GMV Max": 9329590.0, "TikTok Ads": 1905081.0}, "g": {"Meta CPAS": 3798999.0, "Shopee Ads": 16960500.0, "TikTok GMV Max": 37562896.0}, "kol": 0.0, "aff": 0.0}, {"d": "2026-09-21", "rs": 19391500.0, "rt": 25423779.0, "rw": 0.0, "cx": 1632368.0, "os": 237.0, "ot": 329.0, "sp": {"Meta CPAS": 1149062.0, "Meta LP": 0.0, "Meta Traffic/Boost": 1638180.0, "Shopee Ads": 4334493.0, "TikTok GMV Max": 6931895.0, "TikTok Ads": 1728957.0}, "g": {"Meta CPAS": 4536899.0, "Shopee Ads": 17342500.0, "TikTok GMV Max": 26227704.0}, "kol": 0.0, "aff": 0.0}, {"d": "2026-09-22", "rs": 20167999.0, "rt": 25228165.0, "rw": 0.0, "cx": 1359605.0, "os": 235.0, "ot": 331.0, "sp": {"Meta CPAS": 1237289.0, "Meta LP": 0.0, "Meta Traffic/Boost": 1463542.0, "Shopee Ads": 4729379.0, "TikTok GMV Max": 6819018.0, "TikTok Ads": 1138768.0}, "g": {"Meta CPAS": 5373000.0, "Shopee Ads": 20633499.0, "TikTok GMV Max": 25940031.0}, "kol": 0.0, "aff": 0.0}, {"d": "2026-09-23", "rs": 19674500.0, "rt": 20681927.0, "rw": 0.0, "cx": 1209923.0, "os": 224.0, "ot": 271.0, "sp": {"Meta CPAS": 1436758.0, "Meta LP": 0.0, "Meta Traffic/Boost": 1496474.0, "Shopee Ads": 4378236.0, "TikTok GMV Max": 5252698.0, "TikTok Ads": 1236722.0}, "g": {"Meta CPAS": 3853997.0, "Shopee Ads": 17859500.0, "TikTok GMV Max": 20050108.0}, "kol": 0.0, "aff": 0.0}, {"d": "2026-09-24", "rs": 24042000.0, "rt": 37143754.0, "rw": 0.0, "cx": 2414402.0, "os": 304.0, "ot": 545.0, "sp": {"Meta CPAS": 1219045.0, "Meta LP": 0.0, "Meta Traffic/Boost": 1423338.0, "Shopee Ads": 5220256.0, "TikTok GMV Max": 9732142.0, "TikTok Ads": 1312859.0}, "g": {"Meta CPAS": 8723387.0, "Shopee Ads": 23716982.0, "TikTok GMV Max": 38193246.0}, "kol": 0.0, "aff": 0.0}, {"d": "2026-09-25", "rs": 57885000.0, "rt": 41286897.0, "rw": 0.0, "cx": 7719826.0, "os": 630.0, "ot": 613.0, "sp": {"Meta CPAS": 1692384.0, "Meta LP": 0.0, "Meta Traffic/Boost": 1361334.0, "Shopee Ads": 12438051.0, "TikTok GMV Max": 11920026.0, "TikTok Ads": 1133599.0}, "g": {"Meta CPAS": 25091341.0, "Shopee Ads": 55966314.0, "TikTok GMV Max": 42209018.0}, "kol": 0.0, "aff": 0.0}, {"d": "2026-09-26", "rs": 26918000.0, "rt": 32289763.0, "rw": 0.0, "cx": 1833433.0, "os": 329.0, "ot": 494.0, "sp": {"Meta CPAS": 2123434.0, "Meta LP": 0.0, "Meta Traffic/Boost": 1304588.0, "Shopee Ads": 7260541.0, "TikTok GMV Max": 9299797.0, "TikTok Ads": 1292725.0}, "g": {"Meta CPAS": 6821400.0, "Shopee Ads": 25846000.0, "TikTok GMV Max": 34102056.0}, "kol": 0.0, "aff": 0.0}, {"d": "2026-09-27", "rs": 29695000.0, "rt": 29562086.0, "rw": 0.0, "cx": 2057907.0, "os": 359.0, "ot": 408.0, "sp": {"Meta CPAS": 1107003.0, "Meta LP": 0.0, "Meta Traffic/Boost": 1240941.0, "Shopee Ads": 8279843.0, "TikTok GMV Max": 8246408.0, "TikTok Ads": 1424232.0}, "g": {"Meta CPAS": 6588200.0, "Shopee Ads": 30948000.0, "TikTok GMV Max": 27916059.0}, "kol": 0.0, "aff": 0.0}], "plan": {"8": {"Shopee": 156750000.0, "TikTok": 317350000.0, "Meta": 75900000.0, "tShopee": 5.32, "tTikTok": 3.85, "tMeta": 1.54, "status": "Disetujui", "fokus": "Relaunch AC 2.0 · 8.8 · payday"}, "9": {"Shopee": 186358000.0, "TikTok": 279242000.0, "Meta": 84400000.0, "tShopee": 5.92, "tTikTok": 3.47, "tMeta": 2.02, "status": "Disetujui", "fokus": "9.9 · payday"}, "10": {"Shopee": 200000000.0, "TikTok": 315000000.0, "Meta": 90000000.0, "tShopee": 4.54, "tTikTok": 3.56, "tMeta": 2.88, "status": "Menunggu approval", "fokus": "Draft tim sebelumnya — 10.10 belum masuk, perlu revisi"}}, "shifts": [{"d": "", "p": "TikTok", "dari": "GMV Max · Dr. Chung", "ke": "Live GMV Max", "alasan": "Catatan laporan mingguan Sep: budget dipindah ke Live GMV Max"}], "topups": [{"d": "2026-08-12", "jenis": "Top-up awal bulan", "ket": "Agu · VA 1/3", "dpp": 50000000.0, "status": "Saldo masuk"}, {"d": "2026-08-12", "jenis": "Top-up awal bulan", "ket": "Agu · VA 2/3", "dpp": 50000000.0, "status": "Saldo masuk"}, {"d": "2026-08-12", "jenis": "Top-up awal bulan", "ket": "Agu · VA 3/3", "dpp": 50000000.0, "status": "Saldo masuk"}, {"d": "2026-09-12", "jenis": "Top-up awal bulan", "ket": "Sep · VA 1/3", "dpp": 50000000.0, "status": "Saldo masuk"}, {"d": "2026-09-12", "jenis": "Top-up awal bulan", "ket": "Sep · VA 2/3", "dpp": 50000000.0, "status": "Saldo masuk"}, {"d": "2026-09-12", "jenis": "Top-up awal bulan", "ket": "Sep · VA 3/3", "dpp": 50000000.0, "status": "Saldo masuk"}], "skus": [{"n": "AC 2.0 Spot Drying Lotion x1", "p": 31600.0, "q": {"Jan": 0.0, "Feb": 0.0, "Mar": 0.0, "Apr": 0.0, "Mei": 0.0, "Jun": 0.0, "Jul": 0.0, "Agu": 0.0, "Sep": 13105.0, "Okt": 0.0, "Nov": 0.0, "Des": 0.0}}, {"n": "AC 2.0 Twin Pack", "p": 83250.0, "q": {"Jan": 0.0, "Feb": 0.0, "Mar": 0.0, "Apr": 0.0, "Mei": 0.0, "Jun": 0.0, "Jul": 0.0, "Agu": 0.0, "Sep": 1372.0, "Okt": 0.0, "Nov": 0.0, "Des": 0.0}}, {"n": "AC 2.0 Triple Pack", "p": 134000.0, "q": {"Jan": 0.0, "Feb": 0.0, "Mar": 0.0, "Apr": 0.0, "Mei": 0.0, "Jun": 0.0, "Jul": 0.0, "Agu": 0.0, "Sep": 655.0, "Okt": 0.0, "Nov": 0.0, "Des": 0.0}}, {"n": "Bundle Jerawat Hilang, Bekas Lenyap", "p": 84750.0, "q": {"Jan": 0.0, "Feb": 0.0, "Mar": 0.0, "Apr": 0.0, "Mei": 0.0, "Jun": 0.0, "Jul": 0.0, "Agu": 0.0, "Sep": 3615.0, "Okt": 0.0, "Nov": 0.0, "Des": 0.0}}, {"n": "CorrecTone Spot Serum Concealer x1", "p": 34000.0, "q": {"Jan": 0.0, "Feb": 0.0, "Mar": 0.0, "Apr": 0.0, "Mei": 0.0, "Jun": 0.0, "Jul": 0.0, "Agu": 0.0, "Sep": 8462.0, "Okt": 0.0, "Nov": 0.0, "Des": 0.0}}, {"n": "CorrecTone Twin Pack", "p": 86250.0, "q": {"Jan": 0.0, "Feb": 0.0, "Mar": 0.0, "Apr": 0.0, "Mei": 0.0, "Jun": 0.0, "Jul": 0.0, "Agu": 0.0, "Sep": 0.0, "Okt": 0.0, "Nov": 0.0, "Des": 0.0}}, {"n": "3X Defense Gentle Cleansing Gel 100ml", "p": 27000.0, "q": {"Jan": 0.0, "Feb": 0.0, "Mar": 0.0, "Apr": 0.0, "Mei": 0.0, "Jun": 0.0, "Jul": 0.0, "Agu": 0.0, "Sep": 1670.0, "Okt": 0.0, "Nov": 0.0, "Des": 0.0}}, {"n": "3X Defense Cleansing Gel Twin", "p": 92000.0, "q": {"Jan": 0.0, "Feb": 0.0, "Mar": 0.0, "Apr": 0.0, "Mei": 0.0, "Jun": 0.0, "Jul": 0.0, "Agu": 0.0, "Sep": 0.0, "Okt": 0.0, "Nov": 0.0, "Des": 0.0}}, {"n": "5% Peptamide AI Moisturizer", "p": 75000.0, "q": {"Jan": 0.0, "Feb": 0.0, "Mar": 0.0, "Apr": 0.0, "Mei": 0.0, "Jun": 0.0, "Jul": 0.0, "Agu": 0.0, "Sep": 515.0, "Okt": 0.0, "Nov": 0.0, "Des": 0.0}}, {"n": "Hy Matte, Bye UV! Sunscreen", "p": 44000.0, "q": {"Jan": 0.0, "Feb": 0.0, "Mar": 0.0, "Apr": 0.0, "Mei": 0.0, "Jun": 0.0, "Jul": 0.0, "Agu": 0.0, "Sep": 0.0, "Okt": 0.0, "Nov": 0.0, "Des": 0.0}}, {"n": "Hy Glow, Bye UV! Sunscreen", "p": 44000.0, "q": {"Jan": 0.0, "Feb": 0.0, "Mar": 0.0, "Apr": 0.0, "Mei": 0.0, "Jun": 0.0, "Jul": 0.0, "Agu": 0.0, "Sep": 0.0, "Okt": 0.0, "Nov": 0.0, "Des": 0.0}}, {"n": "Triple-B Serum 20ml", "p": 42000.0, "q": {"Jan": 0.0, "Feb": 0.0, "Mar": 0.0, "Apr": 0.0, "Mei": 0.0, "Jun": 0.0, "Jul": 0.0, "Agu": 0.0, "Sep": 1450.0, "Okt": 0.0, "Nov": 0.0, "Des": 0.0}}, {"n": "Bundle rutinitas (set 3–5 produk)", "p": 176000.0, "q": {"Jan": 0.0, "Feb": 0.0, "Mar": 0.0, "Apr": 0.0, "Mei": 0.0, "Jun": 0.0, "Jul": 0.0, "Agu": 0.0, "Sep": 0.0, "Okt": 0.0, "Nov": 0.0, "Des": 0.0}}], "boost": {"BOOST_TIKTOK": {}, "BOOST_IG": {}}, "note": "Agustus – 27 September 2026 = rekonstruksi dari laporan tim sebelumnya. Mulai Oktober diisi harian dari Seller Center & dashboard iklan.", "next": ["Kunci plan Oktober + tambahkan 10.10 (H-14 = 26 Sep sudah lewat, percepat approval).", "Shopee Ads: ROAS di bawah target 3 hari terakhir — ganti kreatif produk & cek voucher sebelum turunkan budget.", "Meta CPAS sedang paling efisien — naikkan bertahap +20% / 48 jam selama ROAS di atas target.", "Produksi batch 1 konten Meta (CPAS-01…03, LP-01…03) — deadline 3–7 Okt."]};
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const BLN = ["Jan","Feb","Mar","Apr","Mei","Jun","Jul","Agu","Sep","Okt","Nov","Des"];
+const BULAN = ["Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember"];
+const jt = v => Math.abs(v) >= 1e9 ? "Rp" + (v / 1e9).toFixed(2).replace(".", ",") + " M" : "Rp" + (v / 1e6).toFixed(1).replace(".", ",") + " jt";
+const num = v => Math.round(v).toLocaleString("id-ID");
+const rp = v => "Rp" + Math.round(v).toLocaleString("id-ID");
+const x2 = v => isFinite(v) ? v.toFixed(2).replace(".", ",") : "–";
+const pc = v => isFinite(v) ? Math.round(v * 100) + "%" : "–";
+const dd = s => { const d = new Date(s + "T00:00:00"); return d.getDate() + " " + BLN[d.getMonth()]; };
+const PPN = 0.11;
+const PLAT = {Shopee:{c:"var(--shopee)",hex:"#EE4D2D",sp:["Shopee Ads"],g:["Shopee Ads"]},
+              TikTok:{c:"var(--tiktok)",hex:"#1d2433",sp:["TikTok GMV Max","TikTok Ads"],g:["TikTok GMV Max"]},
+              Meta:{c:"var(--meta)",hex:"#2a78d6",sp:["Meta CPAS","Meta LP","Meta Traffic/Boost"],g:["Meta CPAS"]}};
+const CH = ["Shopee Ads","TikTok GMV Max","TikTok Ads","Meta CPAS","Meta LP","Meta Traffic/Boost"];
+const CHP = {"Shopee Ads":"Shopee","TikTok GMV Max":"TikTok","TikTok Ads":"TikTok","Meta CPAS":"Meta","Meta LP":"Meta","Meta Traffic/Boost":"Meta"};
+$("#note").textContent = D.note;
+
+// ---------- minggu (Senin–Minggu) ----------
+const byDate = {}; D.days.forEach(x => byDate[x.d] = x);
+const iso = d => d.toISOString().slice(0, 10);
+const addD = (s, k) => { const d = new Date(s + "T00:00:00Z"); d.setUTCDate(d.getUTCDate() + k); return iso(d); };
+const monday = s => { const d = new Date(s + "T00:00:00Z"); const w = (d.getUTCDay() + 6) % 7; d.setUTCDate(d.getUTCDate() - w); return iso(d); };
+const WEEKS = [...new Set(D.days.map(x => monday(x.d)))].sort().map(m => ({a:m, b:addD(m, 6)}))
+  .filter(w => D.days.filter(x => x.d >= w.a && x.d <= w.b).length >= 4);
+const last = D.days[D.days.length - 1].d;
+$("#wk").innerHTML = WEEKS.map((w, i) => `<option value="${i}">Minggu ${dd(w.a)} – ${dd(w.b)}${i === WEEKS.length - 1 ? " (terbaru)" : ""}</option>`).join("");
+let wi = WEEKS.length - 1; $("#wk").value = wi;
+
+function agg(a, b){ const o = {rev:0, gross:0, cx:0, ord:0, rs:0, rt:0, os:0, ot:0, n:0, sp:{}, g:{}, mc:0};
+  CH.forEach(c => { o.sp[c] = 0; o.g[c] = 0; });
+  D.days.forEach(x => { if (x.d < a || x.d > b) return; o.n++;
+    o.rs += x.rs; o.rt += x.rt; o.gross += x.rs + x.rt + x.rw; o.cx += x.cx; o.os += x.os; o.ot += x.ot; o.mc += x.kol + x.aff;
+    CH.forEach(c => { o.sp[c] += x.sp[c] || 0; o.g[c] += (x.g[c] || 0); }); });
+  o.rev = o.gross - o.cx; o.ord = o.os + o.ot;
+  o.spend = CH.reduce((s, c) => s + o.sp[c], 0); o.gmv = CH.reduce((s, c) => s + o.g[c], 0);
+  o.roas = o.spend ? o.gmv / o.spend : NaN; o.mer = o.rev / (o.spend * (1 + PPN) + o.mc); o.aov = o.ord ? o.gross / o.ord : NaN;
+  o.P = {All:{sp:o.spend, g:o.gmv, roas:o.roas}}; Object.keys(PLAT).forEach(p => { const sp = PLAT[p].sp.reduce((s, c) => s + o.sp[c], 0), g = PLAT[p].g.reduce((s, c) => s + o.g[c], 0); o.P[p] = {sp, g, roas: sp ? g / sp : NaN}; });
+  return o; }
+const W = () => WEEKS[wi], Wp = () => WEEKS[wi - 1];
+const cur = () => agg(W().a, W().b), prev = () => Wp() ? agg(Wp().a, Wp().b) : null;
+const delta = (a, b, inv) => { if (!b || !isFinite(a) || !isFinite(b) || !b) return `<span class="dl fl">–</span>`;
+  const r = a / b - 1, good = inv ? r < 0 : r > 0; return `<span class="dl ${Math.abs(r) < .02 ? "fl" : good ? "up" : "dn"}">${r > 0 ? "▲" : "▼"} ${Math.abs(Math.round(r * 100))}%</span>`; };
+const tgtOf = (pl, p) => !pl ? null : p === "All" ? (pl.Shopee * pl.tShopee + pl.TikTok * pl.tTikTok + pl.Meta * pl.tMeta) / ((pl.Shopee + pl.TikTok + pl.Meta) || 1) : pl["t" + p] || null;
+const ITEMS = {"Semua platform":{}, Shopee:{sp:["Shopee Ads"], g:["Shopee Ads"], hex:"#EE4D2D"}, TikTok:{sp:["TikTok GMV Max","TikTok Ads"], g:["TikTok GMV Max"], hex:"#1d2433"},
+  Meta:{sp:["Meta CPAS","Meta LP","Meta Traffic/Boost"], g:["Meta CPAS"], hex:"#2a78d6"}, "Meta CPAS":{sp:["Meta CPAS"], g:["Meta CPAS"], hex:"#2a78d6"},
+  "Meta LP → Shopee":{sp:["Meta LP"], g:[], hex:"#6aa6ee", note:"Dinilai dari Add to Cart & biaya per ATC, bukan ROAS"}};
+const planOf = s => D.plan[new Date(s + "T00:00:00").getMonth() + 1] || null;
+function rule(p, endDay){ const pl = planOf(endDay); if (!pl) return {k:"na", t:"Belum ada target"};
+  const t = tgtOf(pl, p), a = agg(addD(endDay, -2), endDay).P[p]; if (!t || !isFinite(a.roas)) return {k:"na", t:"Belum ada data"};
+  const r = a.roas / t; return r >= 1 ? {k:"naik", t:"Naik +20%", r, a:a.roas, tg:t} : r >= .8 ? {k:"tahan", t:"Tahan · ganti kreatif", r, a:a.roas, tg:t} : {k:"turun", t:"Turun −20%", r, a:a.roas, tg:t}; }
+const means = arr => `<div class="means"><b>Insight</b>${arr.map(s => `<span>${s}</span>`).join("")}</div>`;
+
+// ---------- chart helpers ----------
+function lineChart(el, o){ // o: {labels, series:[{n,c,v,dash}], band:[i0,i1], fmt, target:[{v,c,n}]}
+  const nar = el.clientWidth < 560, Wd = nar ? 430 : 760, H = nar ? 300 : 290, L = nar ? 56 : 64, R = 14, T = 14, B = 34, n = o.labels.length;
+  const all = o.series.flatMap(s => s.v.filter(v => v != null && isFinite(v))).concat((o.target || []).map(t => t.v).filter(isFinite));
+  let mx = Math.max(...all, 0) * 1.12 || 1, mn = o.zero === false ? Math.min(...all) * .85 : 0;
+  const X = i => L + (n <= 1 ? 0 : i * (Wd - L - R) / (n - 1)), Y = v => T + (H - T - B) * (1 - (v - mn) / (mx - mn));
+  let s = `<svg viewBox="0 0 ${Wd} ${H}" role="img">`;
+  for (let k = 0; k <= 4; k++){ const v = mn + (mx - mn) * k / 4; s += `<line x1="${L}" x2="${Wd - R}" y1="${Y(v)}" y2="${Y(v)}" stroke="#e6e9f0"/><text x="${L - 8}" y="${Y(v) + 4}" font-size="11" fill="#6b7385" text-anchor="end">${o.fmt(v)}</text>`; }
+  if (o.band){ const a = X(o.band[0]) - (n > 1 ? (Wd - L - R) / (n - 1) / 2 : 0), b = X(o.band[1]) + (n > 1 ? (Wd - L - R) / (n - 1) / 2 : 0);
+    s += `<rect x="${Math.max(L, a)}" y="${T}" width="${Math.min(Wd - R, b) - Math.max(L, a)}" height="${H - T - B}" fill="#F26B1D" opacity=".08"/>`; }
+  const step = Math.ceil(n / (nar ? 5 : 9));
+  o.labels.forEach((l, i) => { if (i % step === 0 || i === n - 1) s += `<text x="${X(i)}" y="${H - 12}" font-size="11" fill="#6b7385" text-anchor="middle">${esc(l)}</text>`; });
+  (o.target || []).forEach(t => { if (isFinite(t.v)) s += `<line x1="${L}" x2="${Wd - R}" y1="${Y(t.v)}" y2="${Y(t.v)}" stroke="${t.c}" stroke-width="2" stroke-dasharray="6 5"/><text x="${Wd - R}" y="${Y(t.v) - 6}" font-size="11" fill="${t.c}" text-anchor="end" font-weight="600">${esc(t.n)}</text>`; });
+  o.series.forEach((se, k) => { let d = "", pen = false; se.v.forEach((v, i) => { if (v == null || !isFinite(v)) { pen = false; return; } d += (pen ? "L" : "M") + X(i).toFixed(1) + " " + Y(v).toFixed(1); pen = true; });
+    s += se.dash ? `<path d="${d}" fill="none" stroke="${se.c}" stroke-width="${se.w || 2.4}" stroke-dasharray="7 6" stroke-linecap="round" class="pop"/>`
+                 : `<path d="${d}" fill="none" stroke="${se.c}" stroke-width="${se.w || 2.4}" stroke-linejoin="round" stroke-linecap="round" pathLength="1" class="draw" style="animation-delay:${k * .12}s"/>`;
+    if (se.dots) se.v.forEach((v, i) => { if (v != null && isFinite(v)) s += `<circle cx="${X(i)}" cy="${Y(v)}" r="4" fill="${se.c}" stroke="#fff" stroke-width="2" class="pop" style="animation-delay:${.6 + i * .05}s"/>`; }); });
+  s += `<line id="xh" x1="0" x2="0" y1="${T}" y2="${H - B}" stroke="#1F2A44" stroke-width="1" opacity="0"/><rect x="${L}" y="${T}" width="${Wd - L - R}" height="${H - T - B}" fill="transparent" class="hov"/></svg><div class="tip"></div>`;
+  el.innerHTML = s; const svg = el.querySelector("svg"), tip = el.querySelector(".tip"), xh = el.querySelector("#xh");
+  const move = e => { const r = svg.getBoundingClientRect(), px = (e.clientX - r.left) / r.width * Wd; let i = Math.round((px - L) / ((Wd - L - R) / Math.max(1, n - 1))); i = Math.max(0, Math.min(n - 1, i));
+    xh.setAttribute("x1", X(i)); xh.setAttribute("x2", X(i)); xh.setAttribute("opacity", .35);
+    tip.innerHTML = `<b>${esc(o.tips ? o.tips[i] : o.labels[i])}</b>` + o.series.map(se => `<span style="color:${se.tc || "#fff"}">●</span> ${esc(se.n)}: ${se.v[i] == null || !isFinite(se.v[i]) ? "–" : o.fmt(se.v[i], true)}`).join("<br>");
+    tip.style.opacity = 1; const tx = X(i) / Wd * r.width; tip.style.left = Math.min(r.width - tip.offsetWidth - 4, Math.max(4, tx + 12)) + "px"; tip.style.top = "8px"; };
+  svg.querySelector(".hov").addEventListener("mousemove", move); svg.querySelector(".hov").addEventListener("touchstart", e => move(e.touches[0]), {passive:true});
+  svg.querySelector(".hov").addEventListener("mouseleave", () => { tip.style.opacity = 0; xh.setAttribute("opacity", 0); }); }
+
+function donut(el, parts, center){ const C = 2 * Math.PI * 70, tot = parts.reduce((s, p) => s + p.v, 0) || 1; let off = 0;
+  el.innerHTML = `<div class="split"><div class="chart"><svg viewBox="0 0 200 200">${parts.map((p, i) => { const len = p.v / tot * C, seg = `<circle cx="100" cy="100" r="70" fill="none" stroke="${p.c}" stroke-width="30" data-i="${i}" style="cursor:pointer;stroke-dasharray:0 ${C};transition:stroke-dasharray .9s ease ${i * .15}s,opacity .2s" data-len="${len}" stroke-dashoffset="${-off}" transform="rotate(-90 100 100)"/>`; off += len; return seg; }).join("")}
+   <text x="100" y="94" text-anchor="middle" font-size="12" fill="#6b7385" id="dn">${esc(center.n)}</text><text x="100" y="116" text-anchor="middle" font-size="18" font-weight="700" fill="#1F2A44" id="dv">${esc(center.v)}</text></svg></div>
+   <div class="dleg">${parts.map((p, i) => `<button data-i="${i}"><span><i style="display:inline-block;width:11px;height:11px;border-radius:3px;background:${p.c};margin-right:8px"></i>${esc(p.n)}</span><b>${esc(p.f)} · ${pc(p.v / tot)}</b></button>`).join("")}</div></div>
+   <span class="hint">Klik irisan atau nama channel buat detail</span>`;
+  const cs = el.querySelectorAll("circle[data-i]"); requestAnimationFrame(() => requestAnimationFrame(() => cs.forEach(c => c.style.strokeDasharray = c.dataset.len + " " + C)));
+  let sel = -1; const pick = i => { sel = sel === i ? -1 : i; cs.forEach((c, j) => c.style.opacity = sel < 0 || sel === j ? 1 : .25);
+    el.querySelectorAll(".dleg button").forEach((b, j) => b.classList.toggle("on", sel === j));
+    el.querySelector("#dn").textContent = sel < 0 ? center.n : parts[sel].n; el.querySelector("#dv").textContent = sel < 0 ? center.v : parts[sel].f + " · " + pc(parts[sel].v / tot); };
+  el.querySelectorAll("[data-i]").forEach(b => b.addEventListener("click", () => pick(+b.dataset.i))); }
+
+// ---------- slides ----------
+const SL = [
+ {t:"Ringkasan", html:() => { const c = cur(), p = prev();
+   const best = Object.keys(PLAT).map(k => ({k, r:rule(k, W().b)}));
+   return `<div class="kicker">Minggu ${dd(W().a)} – ${dd(W().b)} ${new Date(W().b).getFullYear()}</div><h2>Ringkasan minggu ini</h2>
+   <p class="sub">Dibanding minggu sebelumnya. Omzet = Shopee + TikTok Shop (+ website) dikurangi cancel.</p>
+   <div class="tiles">
+    <div class="card tile"><div class="l">Omzet bersih</div><div class="v">${jt(c.rev)}</div><div class="s2">${delta(c.rev, p && p.rev)} vs ${p ? jt(p.rev) : "–"}</div></div>
+    <div class="card tile"><div class="l">Total order</div><div class="v">${num(c.ord)}</div><div class="s2">${delta(c.ord, p && p.ord)} AOV ${rp(c.aov)}</div></div>
+    <div class="card tile"><div class="l">Spend iklan</div><div class="v">${jt(c.spend)}</div><div class="s2">${delta(c.spend, p && p.spend, true)} sebelum PPN</div></div>
+    <div class="card tile"><div class="l">ROAS iklan</div><div class="v">${x2(c.roas)}</div><div class="s2">${delta(c.roas, p && p.roas)} GMV iklan ÷ spend</div></div>
+    <div class="card tile"><div class="l">MER</div><div class="v">${x2(c.mer)}</div><div class="s2">${delta(c.mer, p && p.mer)} omzet ÷ biaya marketing</div></div></div>
+   <div class="card" style="margin-top:12px"><div class="kicker" style="margin-bottom:8px">Saran budget per platform (ROAS 3 hari terakhir vs target)</div>
+    <div class="tiles">${best.map(b => `<div><b style="color:${PLAT[b.k].c}">${b.k}</b><br><span class="badge b-${b.r.k}">${b.r.t}</span></div>`).join("")}</div></div>
+   ${means([p ? `Omzet bersih ${c.rev >= p.rev ? "naik" : "turun"} ${Math.abs(Math.round((c.rev / p.rev - 1) * 100))}% dibanding minggu lalu, spend iklan ${c.spend >= p.spend ? "naik" : "turun"} ${Math.abs(Math.round((c.spend / p.spend - 1) * 100))}%.` : "Minggu pertama data.",
+     `Setiap Rp1 biaya marketing (termasuk PPN) menghasilkan omzet Rp${x2(c.mer)}.`])}
+   <div class="sheetwrap"><a class="sheet" href="${esc(D.sheet)}" target="_blank" rel="noopener">Buka Performance Report ↗</a></div>`; }},
+ {t:"Tren harian", html:() => `<div class="kicker">Tren harian · ${dd(W().a)} – ${dd(W().b)}</div><h2>Pergerakan harian</h2>
+   <p class="sub">Senin–Minggu pada minggu yang dipilih. Ganti minggu di pojok kanan atas.</p>
+   <div class="ctrl" id="tm">${["Omzet","Order","AOV","Cancel %"].map((m, i) => `<button data-m="${m}" class="${i ? "" : "on"}">${m}</button>`).join("")}</div>
+   <div class="ctrl tog" id="tl">${[["Shopee","#EE4D2D"],["TikTok Shop","#1d2433"],["Total","#9aa6c0"]].map(([n, c]) => `<button data-s="${n}" class="on"><i class="ln" style="background:${c}"></i>${n}</button>`).join("")}<span class="hint" style="margin:0">Klik buat on/off garis</span></div>
+   <div class="card chart" id="c-trend"></div><span class="hint">Geser / sentuh grafik buat lihat angka per hari</span><div id="m-trend"></div>`,
+   draw:() => { const btns = document.querySelectorAll("#tm button"); btns.forEach(b => b.onclick = () => { btns.forEach(x => x.classList.toggle("on", x === b)); tM = b.dataset.m; trend(tM); });
+     document.querySelectorAll("#tl button").forEach(b => { b.classList.toggle("on", !!tVis[b.dataset.s]); b.onclick = () => {
+       const k = b.dataset.s; if (tVis[k] && Object.values(tVis).filter(Boolean).length === 1) return; tVis[k] = !tVis[k]; b.classList.toggle("on", tVis[k]); trend(tM); }; });
+     trend(tM); }},
+ {t:"Channel toko", html:() => { const c = cur(), p = prev();
+   return `<div class="kicker">Channel toko · minggu ini</div><h2>Shopee vs TikTok Shop</h2><p class="sub">Porsi omzet kotor per marketplace, order, dan nilai rata-rata order.</p>
+   <div class="card" id="c-donut"></div>
+   <div class="tiles" style="margin-top:12px">
+    <div class="card tile"><div class="l">Shopee</div><div class="v">${jt(c.rs)}</div><div class="s2">${delta(c.rs, p && p.rs)} ${num(c.os)} order · AOV ${rp(c.os ? c.rs / c.os : 0)}</div></div>
+    <div class="card tile"><div class="l">TikTok Shop</div><div class="v">${jt(c.rt)}</div><div class="s2">${delta(c.rt, p && p.rt)} ${num(c.ot)} order · AOV ${rp(c.ot ? c.rt / c.ot : 0)}</div></div></div>
+   ${means([`${c.rs >= c.rt ? "Shopee" : "TikTok Shop"} menyumbang porsi terbesar minggu ini (${pc(Math.max(c.rs, c.rt) / (c.rs + c.rt))}).`,
+            `AOV Shopee ${rp(c.os ? c.rs / c.os : 0)} vs TikTok ${rp(c.ot ? c.rt / c.ot : 0)} — beda AOV menentukan bundle mana yang didorong di tiap channel.`])}`; },
+   draw:() => { const c = cur(); donut($("#c-donut"), [{n:"Shopee", v:c.rs, c:"#EE4D2D", f:jt(c.rs)}, {n:"TikTok Shop", v:c.rt, c:"#1d2433", f:jt(c.rt)}], {n:"Omzet kotor", v:jt(c.rs + c.rt)}); }},
+ {t:"Spend & ROAS", html:() => `<div class="kicker">Iklan per platform & channel · minggu ini</div><h2>Spend & ROAS</h2>
+   <p class="sub">Pilih platform atau channel buat lihat detailnya.</p>
+   <div class="ctrl"><select id="spsel" aria-label="Pilih platform / channel">${Object.keys(ITEMS).map(k => `<option>${k}</option>`).join("")}</select></div>
+   <div id="spbody"></div>`,
+   draw:() => { const sel = $("#spsel"); sel.value = spK; sel.onchange = e => { spK = e.target.value; spDetail(); }; spDetail(); }},
+ {t:"ROAS vs target", html:() => `<div class="kicker">ROAS mingguan vs target plan</div><h2>Apakah iklan sesuai target?</h2>
+   <p class="sub">Titik = ROAS per minggu. Garis putus = target ROAS di PLAN bulan tersebut. Blended = semua platform digabung.</p>
+   <div class="ctrl" id="rp">${["Semua platform","Shopee","TikTok","Meta"].map(k => `<button data-p="${k === "Semua platform" ? "All" : k}" class="${k === "Semua platform" ? "on" : ""}">${k === "Semua platform" ? "Semua (blended)" : k}</button>`).join("")}</div>
+   <div class="leg" id="l-roas"></div><div class="card chart" id="c-roas"></div><span class="hint">Geser / sentuh grafik buat lihat ROAS per minggu</span><div id="m-roas"></div>`,
+   draw:() => { const btns = document.querySelectorAll("#rp button"); btns.forEach(b => b.onclick = () => { btns.forEach(x => x.classList.toggle("on", x === b)); roas(b.dataset.p); }); roas("All"); }},
+ {t:"Pacing budget", html:() => { const end = W().b, m = new Date(end + "T00:00:00").getMonth() + 1, pl = D.plan[m], a0 = end.slice(0, 8) + "01", mtd = agg(a0, end);
+   const dim = new Date(new Date(end).getFullYear(), m, 0).getDate(), day = +end.slice(8), ideal = day / dim;
+   if (!pl) return `<div class="kicker">Pacing</div><h2>Belum ada plan untuk ${BULAN[m - 1]}</h2>`;
+   const rows = [["All", "Semua platform", pl.Shopee + pl.TikTok + pl.Meta, mtd.spend], ...Object.keys(PLAT).map(k => [k, k, pl[k], mtd.P[k].sp])];
+   const pace = r => r > ideal + .1 ? "<b>terserap terlalu cepat</b>" : r < ideal - .1 ? "<b>terserap terlalu lambat</b>" : "sesuai pacing";
+   return `<div class="kicker">Pacing ${BULAN[m - 1]} · s.d. ${dd(end)}</div><h2>Budget terserap vs plan</h2>
+   <p class="sub">Garis oranye = seharusnya terserap ${pc(ideal)} (hari ke-${day} dari ${dim}). Status plan: <b>${esc(pl.status || "–")}</b>${pl.fokus ? " · " + esc(pl.fokus) : ""}.</p>
+   <div class="card">${rows.map(([k, lab, b, sp], i) => { const r = b ? sp / b : 0;
+     return `<div class="hb ${k === "All" ? "tot" : ""}"><div class="n">${lab}<small>budget ${jt(b)}</small></div><div class="tr"><div class="fi grow" style="width:${Math.min(100, r * 100)}%;background:${k === "All" ? "#F26B1D" : PLAT[k].c};animation-delay:${i * .12}s"></div><div class="mk" style="left:calc(${ideal * 100}% - 1px)"></div></div>
+      <div class="v">${pc(r)}<small>${jt(sp)} · sisa ${jt(Math.max(0, (b - sp) / Math.max(1, dim - day)))}/hari</small></div></div>`; }).join("")}</div>
+   ${means(rows.filter(r => r[2]).map(([k, lab, b, sp]) => `${lab}: ${pace(sp / b)} (${pc(sp / b)} vs ideal ${pc(ideal)}).`))}`; }},
+ {t:"Per channel", html:() => `<div class="kicker">Rincian per channel iklan</div><h2>Ke mana uang iklan mengalir</h2>
+   <p class="sub">Pilih periode. Channel tanpa GMV (R&F / traffic) dinilai dari jangkauan, bukan ROAS.</p>
+   <div class="ctrl" id="cp"><button data-k="w" class="on">Minggu ini</button><button data-k="m">Bulan berjalan</button></div>
+   <div class="tblw" id="c-ch"></div><div id="m-ch"></div>
+   <details><summary>Catatan pergeseran budget (LOG SHIFTING)</summary><div class="in">${D.shifts.length ? D.shifts.map(s => `<p style="margin:8px 0"><b>${esc(s.p)}</b> ${s.d ? "· " + dd(s.d) : ""}: ${esc(s.dari)} → ${esc(s.ke)}<br><small style="color:var(--muted)">${esc(s.alasan)}</small></p>`).join("") : "Belum ada catatan."}</div></details>`,
+   draw:() => { const btns = document.querySelectorAll("#cp button"); btns.forEach(b => b.onclick = () => { btns.forEach(x => x.classList.toggle("on", x === b)); chTable(b.dataset.k); }); chTable("w"); }},
+ {t:"Top-up Shopee", html:() => { const end = W().b, a0 = end.slice(0, 8) + "01", mtd = agg(a0, end), m = +end.slice(5, 7);
+   const tu = D.topups.filter(t => t.d.slice(0, 7) === end.slice(0, 7)), dpp = tu.filter(t => t.jenis !== "Kredit gratis").reduce((s, t) => s + t.dpp, 0);
+   return `<div class="kicker">Saldo iklan Shopee · ${BULAN[m - 1]}</div><h2>Top-up vs saldo terpakai</h2>
+   <p class="sub">Shopee Ads prepaid: top-up sekali di awal bulan sesuai budget platform. TikTok & Meta dibayar kartu kredit.</p>
+   <div class="tiles"><div class="card tile"><div class="l">Budget Shopee (plan)</div><div class="v">${D.plan[m] ? jt(D.plan[m].Shopee) : "–"}</div></div>
+    <div class="card tile"><div class="l">Top-up masuk (DPP)</div><div class="v">${jt(dpp)}</div><div class="s2">${tu.length} VA</div></div>
+    <div class="card tile"><div class="l">Terpakai s.d. ${dd(end)}</div><div class="v">${jt(mtd.P.Shopee.sp)}</div><div class="s2">${pc(dpp ? mtd.P.Shopee.sp / dpp : NaN)} dari top-up</div></div></div>
+   <details open><summary>Riwayat top-up ${BULAN[m - 1]}</summary><div class="in"><table><thead><tr><th>Tanggal</th><th>Keterangan</th><th class="num">DPP</th><th>Status</th></tr></thead><tbody>
+    ${tu.map(t => `<tr><td>${dd(t.d)}</td><td>${esc(t.ket)}</td><td class="num">${jt(t.dpp)}</td><td>${esc(t.status)}</td></tr>`).join("") || `<tr><td colspan="4" style="color:var(--muted)">Belum ada top-up</td></tr>`}</tbody></table></div></details>
+   ${means([dpp && mtd.P.Shopee.sp > dpp ? `<b>Spend sudah melebihi top-up bulan ini</b> — cek sisa saldo di dashboard & siapkan top-up tambahan.` : `Saldo masih tercukupi dari top-up bulan ini.`])}`; }},
+ {t:"Produk", html:() => { const mk = BLN.slice().reverse().find(b => D.skus.some(s => s.q[b])); if (!mk) return `<h2>Belum ada data produk</h2>`;
+   const rows = D.skus.map(s => ({n:s.n, q:s.q[mk], v:s.q[mk] * s.p})).filter(r => r.q).sort((a, b) => b.v - a.v), mx = rows[0].v, tot = rows.reduce((s, r) => s + r.v, 0);
+   return `<div class="kicker">Produk · ${BULAN[BLN.indexOf(mk)]} (data bulanan)</div><h2>Produk penyumbang omzet</h2><p class="sub">Estimasi omzet = qty × harga jual di SETUP. Hover baris buat lihat pcs.</p>
+   <div class="card">${rows.map((r, i) => `<div class="hb" title="${num(r.q)} pcs"><div class="n">${esc(r.n)}<small>${num(r.q)} pcs</small></div><div class="tr"><div class="fi grow" style="width:${r.v / mx * 100}%;background:${i ? "#9aa6c0" : "var(--orange)"};animation-delay:${i * .06}s"></div></div><div class="v">${jt(r.v)}<small>${pc(r.v / tot)}</small></div></div>`).join("")}</div>
+   ${means([`<b>${esc(rows[0].n)}</b> menyumbang ${pc(rows[0].v / tot)} omzet produk — hero AC 2.0 tetap jadi fokus iklan.`])}`; }},
+ {t:"Aktivitas tim", html:() => { const b = D.boost, st = ["Diminta","Kode diterima","Dipakai iklan","Ditolak kreator","Kedaluwarsa"];
+   return `<div class="kicker">Boost code kreator</div><h2>Request boost code minggu ini</h2><p class="sub">Konten kreator (affiliate & KOL) yang diminta untuk diiklankan.</p>
+   <div class="tblw"><table><thead><tr><th>Platform</th>${st.map(s => `<th class="num">${s}</th>`).join("")}</tr></thead><tbody>
+   ${[["BOOST_TIKTOK","TikTok (Spark Ads)"],["BOOST_IG","Instagram (Partnership ad)"]].map(([k, l]) => `<tr><td>${l}</td>${st.map(s => `<td class="num">${(b[k] || {})[s] || 0}</td>`).join("")}</tr>`).join("")}</tbody></table></div>
+   ${means(["Alur request boost code mulai berjalan Oktober; permintaan dicatat di tab BOOST_TIKTOK & BOOST_IG Performance Report."])}`; }},
+ {t:"Insight & next", html:() => { const c = cur(), p = prev(), ins = [];
+   if (p) ins.push(`Omzet bersih ${jt(c.rev)} (${c.rev >= p.rev ? "naik" : "turun"} ${Math.abs(Math.round((c.rev / p.rev - 1) * 100))}% WoW) dengan spend ${jt(c.spend)}.`);
+   Object.keys(PLAT).forEach(k => { const r = rule(k, W().b); if (r.k !== "na") ins.push(`${k}: ROAS 3 hari ${x2(r.a)} vs target ${x2(r.tg)} → <b>${r.t}</b>.`); });
+   return `<div class="kicker">Kesimpulan minggu ini</div><h2>Insight & langkah minggu depan</h2><p class="sub">Temuan otomatis dari data + rencana tindak lanjut.</p>
+   <div class="list">${ins.map((t, i) => `<div class="item"><div class="no">${i + 1}</div><div>${t}</div></div>`).join("")}</div>
+   <div class="kicker" style="margin:18px 0 8px">Langkah berikutnya</div>
+   <div class="list">${D.next.map((t, i) => `<div class="item nx"><div class="no">${i + 1}</div><div>${esc(t)}</div></div>`).join("")}</div>
+   <div class="sheetwrap"><a class="sheet" href="${esc(D.sheet)}" target="_blank" rel="noopener">Buka Performance Report ↗</a></div>`; }},
+];
+
+// ---------- chart builders ----------
+function span8(){ const ds = []; for (let d = W().a; d <= W().b; d = addD(d, 1)) ds.push(d); return ds; }
+let tM = "Omzet"; const tVis = {"Shopee":true, "TikTok Shop":true, "Total":true};
+function trend(m){ const ds = span8(), g = d => byDate[d];
+  const f = {Omzet:[x => x.rs, x => x.rt, x => x.rs + x.rt], Order:[x => x.os, x => x.ot, x => x.os + x.ot],
+             AOV:[x => x.os ? x.rs / x.os : null, x => x.ot ? x.rt / x.ot : null, x => (x.os + x.ot) ? (x.rs + x.rt) / (x.os + x.ot) : null],
+             "Cancel %":[null, null, x => (x.rs + x.rt) ? x.cx / (x.rs + x.rt) : null]}[m];
+  const ser = [["Shopee","#EE4D2D",f[0]],["TikTok Shop","#1d2433",f[1]],["Total","#9aa6c0",f[2]]].filter(s => s[2] && tVis[s[0]]).map(([n, c, fn]) => ({n, c, tc:c === "#1d2433" ? "#9fb4ff" : c, v:ds.map(d => g(d) ? fn(g(d)) : null)}));
+  const fmt = m === "Cancel %" ? v => pc(v) : m === "Order" ? v => num(v) : m === "AOV" ? (v, t) => t ? rp(v) : "Rp" + Math.round(v / 1000) + "rb" : (v, t) => t ? jt(v) : "Rp" + Math.round(v / 1e6) + "jt";
+  const i0 = ds.indexOf(W().a), i1 = ds.indexOf(W().b);
+  lineChart($("#c-trend"), {labels:ds.map(d => ["Sen","Sel","Rab","Kam","Jum","Sab","Min"][(new Date(d + "T00:00:00").getDay() + 6) % 7] + " " + dd(d)), series:ser.map(x => ({...x, dots:true})), fmt});
+  const avg = (a, b, fn) => { const v = ds.slice(a, b + 1).map(d => g(d) ? fn(g(d)) : null).filter(v => v != null); return v.reduce((s, x) => s + x, 0) / (v.length || 1); };
+  const fn = f[2], now = avg(i0, i1, fn), pd = []; if (Wp()) for (let d = Wp().a; d <= Wp().b; d = addD(d, 1)) pd.push(d);
+  const pv = pd.map(d => g(d) ? fn(g(d)) : null).filter(v => v != null), bef = pv.reduce((s, x) => s + x, 0) / (pv.length || 1);
+  $("#m-trend").innerHTML = means([pv.length ? `Rata-rata harian ${m.toLowerCase()} minggu ini ${fmt(now, true)} vs ${fmt(bef, true)} minggu lalu (${now >= bef ? "naik" : "turun"} ${Math.abs(Math.round((now / bef - 1) * 100))}%).` : `Rata-rata harian ${m.toLowerCase()} minggu ini ${fmt(now, true)} (minggu pertama data, belum ada pembanding).`]); }
+function roas(p){ const ws = WEEKS.slice(Math.max(0, wi - 7), wi + 1), v = ws.map(w => agg(w.a, w.b).P[p].roas), tg = ws.map(w => tgtOf(planOf(w.b), p));
+  const col = p === "All" ? "#F26B1D" : PLAT[p].hex, nm = p === "All" ? "Semua platform (blended)" : p;
+  lineChart($("#c-roas"), {labels:ws.map(w => dd(w.a)), tips:ws.map(w => `Minggu ${dd(w.a)} – ${dd(w.b)}`), series:[{n:"ROAS " + nm, c:col, tc:p === "TikTok" ? "#9fb4ff" : col, v, dots:true}, {n:"Target plan", c:"#6b7385", tc:"#cfd4e0", w:2, v:tg, dash:true}], fmt:v => x2(v), zero:false});
+  $("#l-roas").innerHTML = `<span><i class="ln" style="background:${col}"></i>ROAS ${nm} per minggu</span><span><i class="ln" style="background:repeating-linear-gradient(90deg,#6b7385 0 5px,transparent 5px 9px)"></i>Target plan</span>`;
+  const r = rule(p, W().b);
+  $("#m-roas").innerHTML = `<div style="margin-top:10px">Saran minggu ini: <span class="badge b-${r.k}">${r.t}</span></div>` + means([r.k === "na" ? "Belum ada target untuk bulan ini." : `ROAS 3 hari terakhir ${x2(r.a)} = ${pc(r.r)} dari target ${x2(r.tg)}.`, p === "All" ? "Target blended = proyeksi GMV iklan ÷ total budget di PLAN." : "Aturan: ≥100% naik +20% (maks 1× / 48 jam, stok ≥14 hari) · 80–99% tahan & ganti kreatif · <80% turun −20%."]); }
+let spK = "Semua platform";
+function spDetail(){ const c = cur(), p = prev(), el = $("#spbody");
+  if (spK === "Semua platform"){ const ks = Object.keys(PLAT), mx = Math.max(...ks.flatMap(k => [c.P[k].sp, p ? p.P[k].sp : 0]), 1);
+    el.innerHTML = `<div class="leg"><span><i style="background:#9aa6c0"></i>Warna = spend minggu ini</span><span><i style="background:#c9ced8;height:5px;vertical-align:2px"></i>Abu tipis = minggu lalu</span></div>
+     <div class="card">${ks.map((k, i) => `<div class="hb"><div class="n">${k}<small>ROAS ${x2(c.P[k].roas)} ${delta(c.P[k].roas, p && p.P[k].roas)}</small></div>
+      <div class="tr two"><div class="fi grow" style="width:${c.P[k].sp / mx * 100}%;background:${PLAT[k].c};animation-delay:${i * .12}s"></div>${p ? `<div class="lw grow" style="width:${p.P[k].sp / mx * 100}%;animation-delay:${i * .12}s"></div>` : ""}</div>
+      <div class="v">${jt(c.P[k].sp)}<small>GMV ${jt(c.P[k].g)} · lalu ${p ? jt(p.P[k].sp) : "–"}</small></div></div>`).join("")}</div>
+     ${means([`Porsi spend minggu ini: ${ks.map(k => `${k} ${pc(c.P[k].sp / c.spend)}`).join(" · ")}.`, `ROAS tertinggi: <b>${ks.sort((a, b) => (c.P[b].roas || 0) - (c.P[a].roas || 0))[0]}</b> — kandidat pertama untuk tambahan budget.`])}`;
+    return; }
+  const it = ITEMS[spK], A = o => ({sp:it.sp.reduce((s, k) => s + o.sp[k], 0), g:it.g.reduce((s, k) => s + o.g[k], 0)}), a = A(c), b = p ? A(p) : null;
+  const ds = []; for (let d = W().a; d <= W().b; d = addD(d, 1)) ds.push(d);
+  const day = ds.map(d => { const x = byDate[d]; if (!x) return {sp:0, g:0}; return {sp:it.sp.reduce((s, k) => s + (x.sp[k] || 0), 0), g:it.g.reduce((s, k) => s + (x.g[k] || 0), 0)}; });
+  const hasG = it.g.length > 0;
+  el.innerHTML = `<div class="tiles">
+    <div class="card tile"><div class="l">Spend</div><div class="v">${jt(a.sp)}</div><div class="s2">${delta(a.sp, b && b.sp, true)} lalu ${b ? jt(b.sp) : "–"}</div></div>
+    <div class="card tile"><div class="l">GMV iklan</div><div class="v">${hasG ? jt(a.g) : "–"}</div><div class="s2">${hasG ? delta(a.g, b && b.g) : esc(it.note || "")}</div></div>
+    <div class="card tile"><div class="l">ROAS</div><div class="v">${hasG && a.sp ? x2(a.g / a.sp) : "–"}</div><div class="s2">${hasG && b && b.sp ? delta(a.g / a.sp, b.g / b.sp) + " lalu " + x2(b.g / b.sp) : ""}</div></div>
+    <div class="card tile"><div class="l">Porsi spend</div><div class="v">${pc(a.sp / c.spend)}</div><div class="s2">dari total iklan minggu ini</div></div></div>
+   ${a.sp ? `<div class="leg" style="margin-top:14px"><span><i style="background:${it.hex}"></i>Batang = spend harian (sumbu kiri)</span>${hasG ? `<span><i class="ln" style="background:${it.hex === "#EE4D2D" ? "#1F2A44" : "#F26B1D"}"></i>Garis = ROAS harian (sumbu kanan)</span>` : ""}</div>
+   <div class="card chart" id="c-sp"></div>` : `<div class="card" style="margin-top:14px;color:var(--muted)">Belum ada spend untuk ${esc(spK)} di minggu ini.</div>`}
+   ${it.sp.length > 1 ? `<details open><summary>Rincian channel di dalam ${esc(spK)}</summary><div class="in">${it.sp.map(k => `<div class="hb"><div class="n">${k}</div><div class="tr"><div class="fi grow" style="width:${a.sp ? c.sp[k] / a.sp * 100 : 0}%;background:${it.hex}"></div></div><div class="v">${jt(c.sp[k])}<small>${c.g[k] ? "ROAS " + x2(c.g[k] / c.sp[k]) : "tanpa GMV"}</small></div></div>`).join("")}</div></details>` : ""}
+   <div id="m-sp"></div>`;
+  if (a.sp) comboChart($("#c-sp"), {labels:ds.map(dd), bars:day.map(x => x.sp), barC:it.hex, lineC:it.hex === "#EE4D2D" ? "#1F2A44" : "#F26B1D", line:hasG ? day.map(x => x.sp ? x.g / x.sp : null) : null});
+  const mxd = day.reduce((m, x, i) => x.sp > day[m].sp ? i : m, 0);
+  $("#m-sp").innerHTML = means([a.sp ? `Spend tertinggi di ${dd(ds[mxd])} (${jt(day[mxd].sp)}).` : `${esc(spK)} tidak berjalan minggu ini.`,
+    hasG && a.sp ? `ROAS minggu ini ${x2(a.g / a.sp)}${b && b.sp ? ` vs ${x2(b.g / b.sp)} minggu lalu` : ""}.` : esc(it.note || "")]); }
+function comboChart(el, o){ const LC = o.lineC || "#F26B1D", nar = el.clientWidth < 560, Wd = nar ? 430 : 760, H = 270, L = 60, R = o.line ? 46 : 14, T = 14, B = 32, n = o.labels.length;
+  const mb = Math.max(...o.bars, 1) * 1.15, lv = (o.line || []).filter(v => v != null && isFinite(v)), ml = Math.max(...lv, 1) * 1.15;
+  const bw = (Wd - L - R) / n, X = i => L + bw * (i + .5), YB = v => T + (H - T - B) * (1 - v / mb), YL = v => T + (H - T - B) * (1 - v / ml);
+  let s = `<svg viewBox="0 0 ${Wd} ${H}">`;
+  for (let k = 0; k <= 4; k++){ const y = T + (H - T - B) * k / 4; s += `<line x1="${L}" x2="${Wd - R}" y1="${y}" y2="${y}" stroke="#e6e9f0"/><text x="${L - 8}" y="${y + 4}" font-size="11" fill="${o.barC}" text-anchor="end">${"Rp" + (mb * (1 - k / 4) / 1e6).toFixed(1).replace(".", ",") + "jt"}</text>`;
+    if (o.line) s += `<text x="${Wd - R + 8}" y="${y + 4}" font-size="11" fill="${LC}">${x2(ml * (1 - k / 4))}</text>`; }
+  o.bars.forEach((v, i) => { s += `<rect x="${X(i) - bw * .32}" y="${YB(v)}" width="${bw * .64}" height="${H - B - YB(v)}" rx="5" fill="${o.barC}" class="pop" style="transform-origin:center bottom;transform-box:fill-box;animation-delay:${i * .06}s"/>`;
+    s += `<text x="${X(i)}" y="${H - 12}" font-size="11" fill="#6b7385" text-anchor="middle">${esc(o.labels[i])}</text>`; });
+  if (o.line){ let d = "", pen = false; o.line.forEach((v, i) => { if (v == null || !isFinite(v)) { pen = false; return; } d += (pen ? "L" : "M") + X(i) + " " + YL(v); pen = true; });
+    s += `<path d="${d}" fill="none" stroke="${LC}" stroke-width="2.4" pathLength="1" class="draw" style="animation-delay:.4s"/>` + o.line.map((v, i) => v != null && isFinite(v) ? `<circle cx="${X(i)}" cy="${YL(v)}" r="4" fill="${LC}" stroke="#fff" stroke-width="2" class="pop" style="animation-delay:${.8 + i * .05}s"/>` : "").join(""); }
+  s += o.bars.map((v, i) => `<rect x="${X(i) - bw / 2}" y="${T}" width="${bw}" height="${H - T - B}" fill="transparent" data-i="${i}"/>`).join("") + `</svg><div class="tip"></div>`;
+  el.innerHTML = s + (o.line ? `<div class="gapnote">Sumbu kiri (warna batang) = spend · sumbu kanan (garis) = ROAS</div>` : "");
+  const tip = el.querySelector(".tip"), svg = el.querySelector("svg");
+  svg.querySelectorAll("rect[data-i]").forEach(r => { const show = () => { const i = +r.dataset.i, bb = svg.getBoundingClientRect();
+      tip.innerHTML = `<b>${esc(o.labels[i])}</b>Spend: ${jt(o.bars[i])}${o.line ? `<br>ROAS: ${o.line[i] == null ? "–" : x2(o.line[i])}` : ""}`; tip.style.opacity = 1;
+      tip.style.left = Math.min(bb.width - 150, X(i) / Wd * bb.width + 10) + "px"; tip.style.top = "8px"; };
+    r.addEventListener("mouseenter", show); r.addEventListener("touchstart", show, {passive:true}); r.addEventListener("mouseleave", () => tip.style.opacity = 0); }); }
+function chTable(k){ const end = W().b, a = k === "w" ? W().a : end.slice(0, 8) + "01", o = agg(a, end);
+  $("#c-ch").innerHTML = `<table><thead><tr><th>Channel</th><th>Platform</th><th class="num">Spend</th><th class="num">Porsi</th><th class="num">GMV iklan</th><th class="num">ROAS</th></tr></thead><tbody>${CH.map(c => `<tr><td><b>${c}</b></td><td>${CHP[c]}</td><td class="num">${jt(o.sp[c])}</td><td class="num">${pc(o.sp[c] / o.spend)}</td><td class="num">${["Meta CPAS","Shopee Ads","TikTok GMV Max"].includes(c) ? jt(o.g[c]) : "–"}</td><td class="num">${o.g[c] ? x2(o.g[c] / o.sp[c]) : "–"}</td></tr>`).join("")}
+   <tr><td><b>Total</b></td><td></td><td class="num"><b>${jt(o.spend)}</b></td><td class="num">100%</td><td class="num"><b>${jt(o.gmv)}</b></td><td class="num"><b>${x2(o.roas)}</b></td></tr></tbody></table>`;
+  const top = ["Meta CPAS","Shopee Ads","TikTok GMV Max"].sort((x, y) => (o.g[y] / o.sp[y] || 0) - (o.g[x] / o.sp[x] || 0));
+  $("#m-ch").innerHTML = means([`Channel konversi paling efisien: <b>${top[0]}</b> (ROAS ${x2(o.g[top[0]] / o.sp[top[0]])}), terendah ${top[2]} (ROAS ${x2(o.g[top[2]] / o.sp[top[2]])}).`,
+    `Channel R&F / traffic menyerap ${pc((o.sp["TikTok Ads"] + o.sp["Meta Traffic/Boost"] + o.sp["Meta LP"]) / o.spend)} spend tanpa GMV tercatat — nilai dari jangkauan & klik, bukan ROAS.`]); }
+
+// ---------- navigasi ----------
+const N = SL.length; let at = 0;
+function render(){ $("#main").innerHTML = SL.map((s, i) => `<section class="s" id="s${i}">${s.html()}</section>`).join("");
+  $("#dots").innerHTML = SL.map((s, i) => `<button data-go="${i}">${i + 1} · ${s.t}</button>`).join(""); go(at, true); }
+function go(i, keep){ at = Math.max(0, Math.min(N - 1, i));
+  const sec = document.getElementById("s" + at); if (!keep) sec.innerHTML = SL[at].html();
+  document.querySelectorAll(".s").forEach((el, j) => el.classList.toggle("on", j === at));
+  if (SL[at].draw) SL[at].draw();
+  document.querySelectorAll("#dots button").forEach((b, j) => { b.classList.toggle("on", j === at); b.classList.toggle("done", j < at); });
+  const on = $("#dots button.on"); on && on.scrollIntoView({inline:"center", block:"nearest"});
+  $("#bar").style.width = ((at + 1) / N * 100) + "%"; $("#count").textContent = `${at + 1} / ${N}`;
+  $("#prev").disabled = at === 0; $("#next").disabled = at === N - 1; history.replaceState(null, "", "#" + (at + 1)); window.scrollTo({top:0, behavior:"instant"}); }
+$("#wk").onchange = e => { wi = +e.target.value; render(); };
+document.addEventListener("click", e => { const g = e.target.closest("[data-go]"); if (g) return go(+g.dataset.go); if (e.target.id === "prev") go(at - 1); if (e.target.id === "next") go(at + 1); });
+document.addEventListener("keydown", e => { if (e.target.tagName === "SELECT") return; if (e.key === "ArrowRight") go(at + 1); if (e.key === "ArrowLeft") go(at - 1); });
+window.addEventListener("hashchange", () => { const k = parseInt(location.hash.slice(1)); if (!isNaN(k) && k - 1 !== at) go(k - 1); });
+const h = parseInt((location.hash || "#1").slice(1)); at = isNaN(h) ? 0 : h - 1; render();
+</script></body></html>
