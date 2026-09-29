@@ -11,102 +11,68 @@
   *{margin:0;padding:0;box-sizing:border-box}
   body{font-family:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;background:var(--page);color:var(--dark);min-height:100vh;display:flex;flex-direction:column}
   a{color:inherit;text-decoration:none}
-  header{display:flex;align-items:center;justify-content:space-between;padding:22px 40px;background:var(--dark);color:#fff}
+  header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px 32px;background:var(--dark);color:#fff;flex-wrap:wrap}
   .wordmark{font-size:22px;font-weight:900;letter-spacing:-.02em}
   .wordmark span{color:var(--orange)}
+  .hr{display:flex;align-items:center;gap:14px}
   .tag{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#B9BDC7}
-  main{flex:1;display:flex;align-items:flex-start;justify-content:center;padding:56px 24px}
-  .grid{width:100%;max-width:1160px;justify-content:center;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),560px));gap:24px;align-items:stretch}
-  .card{width:100%;background:#fff;border:1px solid var(--line);border-radius:22px;padding:36px 38px;display:flex;flex-direction:column;gap:18px;box-shadow:0 16px 40px rgba(20,22,28,.08)}
-  .top{display:flex;align-items:center;gap:16px}
-  .logo{width:60px;height:60px;border-radius:50%;background:#F7C600;color:var(--navy);font-weight:900;font-size:11px;line-height:1.05;letter-spacing:.06em;display:flex;align-items:center;justify-content:center;text-align:center;flex-shrink:0}
-  .logo.guide{background:var(--navy);color:#fff}
-  .name{font-size:26px;font-weight:900;letter-spacing:-.01em;color:var(--navy)}
-  .sub{font-size:14px;color:var(--gray);font-weight:500;margin-top:3px;line-height:1.4}
-  .desc{font-size:16px;color:var(--ink);line-height:1.65;display:flex;flex-direction:column;gap:14px;flex:1}
-  .desc p{margin:0}
-  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-size:16px;font-weight:700;border-radius:999px;padding:14px 24px;background:var(--orange);color:#fff;transition:.15s;margin-top:6px;align-self:flex-start}
+  .howto{font-size:12px;font-weight:700;border:1px solid #4a4e5a;border-radius:999px;padding:6px 12px;color:#fff}
+  .howto:hover{border-color:var(--orange);color:var(--orange)}
+  main{flex:1;display:flex;justify-content:center;padding:32px 20px}
+  .wrap{width:100%;max-width:1080px}
+  .intro{font-size:14px;color:var(--gray);margin-bottom:16px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,310px),1fr));gap:14px}
+  .card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px 20px;display:flex;flex-direction:column;gap:10px;box-shadow:0 8px 22px rgba(20,22,28,.06);transition:.15s}
+  .card:hover{border-color:#cfd3dc;box-shadow:0 12px 28px rgba(20,22,28,.1)}
+  .top{display:flex;align-items:center;gap:12px}
+  .logo{width:40px;height:40px;border-radius:12px;color:#fff;font-weight:900;font-size:9px;line-height:1.05;letter-spacing:.04em;display:flex;align-items:center;justify-content:center;text-align:center;flex-shrink:0}
+  .name{font-size:17px;font-weight:800;letter-spacing:-.01em;color:var(--navy);line-height:1.2}
+  .sub{font-size:12px;color:var(--gray);font-weight:500;margin-top:2px}
+  .desc{font-size:13.5px;color:var(--ink);line-height:1.55;flex:1}
+  .btn{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;border-radius:999px;padding:8px 16px;background:var(--orange);color:#fff;align-self:flex-start;transition:.15s}
   .btn:hover{background:#d95a12}
   .btn:focus-visible{outline:3px solid rgba(242,107,29,.35);outline-offset:2px}
-  footer{padding:18px 40px;font-size:12px;color:var(--gray);text-align:center}
-  @media(max-width:600px){
-    header{padding:16px 20px}
-    main{padding:32px 16px}
-    .card{padding:28px 22px}
-    .name{font-size:22px}
-    .btn{width:100%}
-  }
+  footer{padding:16px 32px;font-size:12px;color:var(--gray);text-align:center}
+  @media(max-width:600px){header{padding:14px 16px}main{padding:22px 14px}.name{font-size:16px}}
 </style>
 </head>
 <body>
 <header>
   <div class="wordmark">NURI<span>LAB</span></div>
-  <div class="tag">Marketing Portal</div>
+  <div class="hr"><a class="howto" href="panduan.html">Cara kerja</a><div class="tag">Marketing Portal</div></div>
 </header>
 
-<main>
+<main><div class="wrap">
+  <p class="intro">Laporan & dokumen kerja marketing Nurilab — diperbarui setiap minggu.</p>
   <div class="grid">
-
-    <section class="card">
-      <div class="top">
-        <div class="logo guide">RECAP<br>MINGGU</div>
-        <div>
-          <div class="name">Recap Performa Mingguan</div>
-          <div class="sub">Omzet, iklan, budget &amp; saldo · update tiap minggu</div>
-        </div>
-      </div>
-      <div class="desc">
-        <p>Ringkasan performa minggu ini dibanding minggu lalu: omzet Shopee &amp; TikTok Shop, spend dan ROAS iklan per platform, serta saran naik/tahan/turun budget.</p>
-        <p>Dilengkapi pacing budget bulan berjalan, rincian per channel iklan, top-up saldo Shopee, produk terlaris, dan langkah minggu depan.</p>
-      </div>
-      <a class="btn" href="report-performa.html">Lihat recap →</a>
-    </section>
-    <section class="card">
-      <div class="top">
-        <div class="logo guide" style="background:#F26B1D">MARKET<br>MAP</div>
-        <div>
-          <div class="name">Market Research — Nurilab</div>
-          <div class="sub">Analisis pasar Shopee &amp; TikTok Shop · Sep 2026</div>
-        </div>
-      </div>
-      <div class="desc">
-        <p>Pemetaan pasar obat totol jerawat di Shopee dan TikTok Shop: ukuran pasar, posisi kompetitor, serta pergerakan pangsa pasar setiap pemain.</p>
-        <p>Dilengkapi analisis dua kategori pendukung, yaitu bekas jerawat &amp; dark spot serta skincare jerawat harian, beserta peluang positioning CorrecTone.</p>
-        <p>Ditutup dengan skenario strategis menuju target omzet Rp2 M per bulan.</p>
-      </div>
-      <a class="btn" href="market-nurilab.html">Lihat laporan →</a>
-    </section>
-    <section class="card">
-      <div class="top">
-        <div class="logo guide" style="background:#1E7B34">KONTEN</div>
-        <div>
-          <div class="name">Performa Konten — Nurilab</div>
-          <div class="sub">Brief, status konten &amp; pola yang menang</div>
-        </div>
-      </div>
-      <div class="desc">
-        <p>Laporan konten iklan: progres setiap brief, status penilaian (Winning, Mediocre, Bad), serta keseimbangan funnel.</p>
-        <p>Dilengkapi analisis pola yang menang berdasarkan template, jenis hook, persona, dan angle, beserta langkah berikutnya.</p>
-      </div>
-      <a class="btn" href="report-konten.html">Lihat laporan →</a>
-    </section>
-    <section class="card">
-      <div class="top">
-        <div class="logo guide" style="background:#2a78d6">WINNING<br>KONTEN</div>
-        <div>
-          <div class="name">Analisis Konten Mingguan</div>
-          <div class="sub">Video yang menang, kreator konsisten &amp; pola hook</div>
-        </div>
-      </div>
-      <div class="desc">
-        <p>Analisis mendalam video yang diiklankan: top winning content minggu ini, performa per tipe kreator (affiliate, KOL, akun brand) dan per produk.</p>
-        <p>Dilengkapi pola hook &amp; retensi video menang vs kalah, kreator yang menang berulang (kandidat boost code), dan rekomendasi brief berikutnya.</p>
-      </div>
-      <a class="btn" href="analisis-konten.html">Lihat analisis →</a>
-    </section>
+    <a class="card" href="report-performa.html">
+      <div class="top"><div class="logo" style="background:#1E2761">RECAP</div><div><div class="name">Recap Performa Mingguan</div><div class="sub">Update tiap Senin</div></div></div>
+      <p class="desc">Omzet, iklan per platform, ROAS vs target, pacing budget, dan langkah minggu depan.</p>
+      <span class="btn">Lihat recap →</span>
+    </a>
+    <a class="card" href="analisis-konten.html">
+      <div class="top"><div class="logo" style="background:#2a78d6">WIN</div><div><div class="name">Analisis Konten Mingguan</div><div class="sub">Update tiap Senin</div></div></div>
+      <p class="desc">Video yang menang, performa per tipe kreator & produk, pola hook, dan kandidat boost code.</p>
+      <span class="btn">Lihat analisis →</span>
+    </a>
+    <a class="card" href="report-konten.html">
+      <div class="top"><div class="logo" style="background:#1E7B34">BRIEF</div><div><div class="name">Performa Konten</div><div class="sub">Brief & status konten</div></div></div>
+      <p class="desc">Progres setiap brief, status Winning / Mediocre / Bad, dan pola yang menang.</p>
+      <span class="btn">Lihat laporan →</span>
+    </a>
+    <a class="card" href="market-nurilab.html">
+      <div class="top"><div class="logo" style="background:#F26B1D">MAP</div><div><div class="name">Market Research</div><div class="sub">Shopee & TikTok Shop · Sep 2026</div></div></div>
+      <p class="desc">Ukuran pasar obat totol jerawat, posisi kompetitor, dan skenario menuju Rp2 M per bulan.</p>
+      <span class="btn">Lihat laporan →</span>
+    </a>
+    <a class="card" href="baca-dulu.html">
+      <div class="top"><div class="logo" style="background:#6b7385">BACA</div><div><div class="name">Baca Dulu</div><div class="sub">Panduan folder & file</div></div></div>
+      <p class="desc">Isi setiap folder Nurilab dan fungsi tiap file, dengan link langsung ke Sheets, Slides, dan folder upload.</p>
+      <span class="btn">Buka panduan →</span>
+    </a>
   </div>
-</main>
+</div></main>
 
-<footer>Nurilab · Marketing Report · September 2026</footer>
+<footer>Nurilab · Marketing Report · 2026</footer>
 </body>
 </html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="id"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cara Kerja · Nurilab</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#1F2A44;--ink:#1d2433;--muted:#6b7385;--line:#e6e9f0;--bg:#f6f7fa;--orange:#F26B1D;--win:#1E7B34;--winbg:#E3F3E7;--med:#8A6100;--medbg:#FFF1CC;--blue:#1d5fb8;--bluebg:#E3EEFB;--pink:#9b2c5a;--pinkbg:#FBE6EE}
+*{box-sizing:border-box}
+body{margin:0;font-family:Poppins,system-ui,sans-serif;color:var(--ink);background:var(--bg);font-size:15px;line-height:1.6}
+header{background:var(--navy);color:#fff;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px 20px;flex-wrap:wrap}
+header .brand{font-weight:700;letter-spacing:.18em;font-size:11px;opacity:.75}
+header h1{margin:2px 0 0;font-size:18px;font-weight:600}
+header .r{display:flex;gap:14px;align-items:center}
+header a{color:#cfd4e0;font-size:13px;text-decoration:none}header a:hover{color:#fff}
+header button{font:inherit;font-size:12.5px;font-weight:600;border:1px solid #5b6784;background:transparent;color:#fff;border-radius:99px;padding:6px 13px;cursor:pointer}
+main{max-width:900px;margin:0 auto;padding:24px 16px 60px}
+.kicker{font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+h2{font-size:26px;line-height:1.25;margin:6px 0 6px;color:var(--navy)}
+h3{font-size:15px;color:var(--navy);margin:16px 0 6px}
+.sub{color:var(--muted);margin:0 0 18px}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px 20px;margin-bottom:12px}
+.prin{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:10px}
+.prin div{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 14px;font-size:13.5px}
+.prin b{display:block;color:var(--navy);font-size:14px;margin-bottom:2px}
+table{border-collapse:collapse;width:100%;font-size:13.5px}
+th{background:var(--navy);color:#fff;text-align:left;padding:8px 10px;font-weight:600;font-size:12px}
+td{padding:8px 10px;border-top:1px solid var(--line);vertical-align:top}
+.tw{overflow-x:auto;background:#fff;border:1px solid var(--line);border-radius:14px}
+.ctrl{display:flex;gap:8px;justify-content:flex-end;margin:18px 0 8px}
+.ctrl button{font:inherit;font-size:12.5px;font-weight:600;border:1px solid var(--line);background:#fff;border-radius:99px;padding:6px 13px;cursor:pointer}
+details.ar{background:#fff;border:1px solid var(--line);border-radius:14px;margin-bottom:10px}
+details.ar>summary{display:flex;align-items:center;gap:12px;padding:14px 18px;cursor:pointer;list-style:none}
+details.ar>summary::-webkit-details-marker{display:none}
+.no{width:32px;height:32px;border-radius:50%;background:var(--navy);color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+.tt{flex:1}.tt b{display:block;color:var(--navy);font-size:16px}.tt small{color:var(--muted);font-size:12.5px}
+.st{font-size:12px;font-weight:700;border-radius:99px;padding:3px 10px;white-space:nowrap}
+.aktif{background:var(--winbg);color:var(--win)}.kerangka{background:var(--medbg);color:var(--med)}
+.chev{color:var(--muted);transition:transform .15s}details.ar[open] .chev{transform:rotate(180deg)}
+.bd{padding:0 18px 16px 62px;font-size:14px}
+.files{display:flex;flex-wrap:wrap;gap:6px}.files a,.files span{font-size:12.5px;font-weight:600;background:var(--bg);border-radius:99px;padding:4px 11px;color:#1155CC;text-decoration:none}.files span{color:var(--ink)}
+ol.steps{padding-left:0;list-style:none;margin:6px 0;counter-reset:s}
+ol.steps li{counter-increment:s;display:grid;grid-template-columns:26px 1fr;gap:10px;padding:7px 0;border-top:1px dashed var(--line)}
+ol.steps li:first-child{border-top:0}
+ol.steps li:before{content:counter(s);width:24px;height:24px;border-radius:50%;background:var(--bg);color:var(--navy);font-weight:700;font-size:12px;display:flex;align-items:center;justify-content:center}
+.who{display:inline-block;font-size:11.5px;font-weight:700;border-radius:99px;padding:1px 8px;margin-right:6px}
+.tm{background:var(--bluebg);color:var(--blue)}.nu{background:var(--pinkbg);color:var(--pink)}.kr{background:var(--medbg);color:var(--med)}.au{background:var(--winbg);color:var(--win)}
+ul.rules{margin:6px 0;padding-left:18px}ul.rules li{margin:3px 0}
+.note{background:#FFF7EE;border-left:4px solid var(--orange);padding:10px 14px;font-size:13.5px;margin-top:10px}
+.foot{font-size:12.5px;color:var(--muted);text-align:center;margin-top:24px}
+@media(max-width:640px){h2{font-size:22px}.bd{padding-left:18px}}
+@media print{header .r,.ctrl{display:none}body{background:#fff;font-size:12px}header{-webkit-print-color-adjust:exact;print-color-adjust:exact}details.ar{break-inside:avoid-page}.card,.tw,details.ar{border-color:#ccc}}
+.l{display:block}.l+.l{margin-top:4px}.bd,.sub{max-width:760px}
+</style></head><body>
+<header><div><div class="brand">NURILAB · CARA KERJA</div><h1>Cara Kerja Tim Marketing × Nurilab</h1></div>
+<div class="r"><button id="pdf" type="button">Simpan PDF</button><a href="index.html">← Beranda</a></div></header>
+<main>
+<div class="kicker">Versi 1 · 29 September 2026</div>
+<h2>Siapa mengerjakan apa, kapan, dan pakai file apa</h2>
+<p class="sub"><span class="l">Panduan ringkas sistem kerja marketing Nurilab.</span><span class="l">Klik tiap area untuk melihat langkahnya.</span></p>
+
+<div class="prin">
+ <div><b>Satu sumber angka</b><span class="l">Semua angka performa & budget diketik sekali di Performance Report.</span><span class="l">Laporan lain membaca dari sana.</span></div>
+ <div><b>Satu kode untuk satu konten</b>Kode brief (CPAS-01, LP-01, …) dipakai di brief, nama file, tracker, dan iklan.</div>
+ <div><b>Budget per platform</b>Yang disetujui total per platform; di dalam platform budget boleh digeser — setiap pergeseran dicatat.</div>
+ <div><b>Klaim produk aman</b>Semua konten mengikuti daftar klaim wajib & dilarang di Marketing Content Plan.</div>
+</div>
+
+<h3>Ritme kerja</h3>
+<div class="tw"><table>
+<tr><th>Kapan</th><th>Siapa</th><th>Apa</th></tr>
+<tr><td>Setiap hari</td><td><span class="who tm">Tim Marketing</span></td><td>Isi performa harian (omzet, order, spend & hasil iklan) · pantau budget & saldo · jalankan aturan budget</td></tr>
+<tr><td>2–3× seminggu</td><td><span class="who tm">Tim Marketing</span></td><td>Catat konten yang masuk & hasil iklannya di Content Tracker</td></tr>
+<tr><td>Setiap Senin</td><td><span class="who tm">Tim Marketing</span></td><td>Terbitkan Recap Performa & Analisis Konten minggu lalu di portal · update Progres</td></tr>
+<tr><td>Per batch (2–4 minggu)</td><td><span class="who tm">Tim Marketing</span> <span class="who nu">Nurilab</span></td><td>Brief konten baru → disetujui → diproduksi</td></tr>
+<tr><td>H-3 sebelum awal bulan</td><td><span class="who tm">Tim Marketing</span> <span class="who nu">Approver</span></td><td>Ajukan & setujui plan budget per platform bulan depan</td></tr>
+<tr><td>Tanggal 1</td><td><span class="who tm">Tim Marketing</span> <span class="who nu">Finance</span></td><td>Angka top-up Shopee Ads dikirim → finance transfer</td></tr>
+</table></div>
+
+<div class="ctrl"><button data-x="1">Buka semua</button><button data-x="0">Tutup semua</button></div>
+
+<details class="ar"><summary><span class="no">1</span><span class="tt"><b>Reporting</b><small>Laporan harian, mingguan & bulanan</small></span><span class="st aktif">Aktif</span><span class="chev">▾</span></summary><div class="bd">
+ <div class="files"><a href="https://docs.google.com/spreadsheets/d/1Q2L-Gjr4MWT8YQG64j8BE3FRvC-5xYCvexoeqirBrIg/edit?usp=sharing" target="_blank" rel="noopener">Performance Report ↗</a><a href="report-performa.html">Recap Performa Mingguan ↗</a></div>
+ <ol class="steps">
+  <li><div><span class="who tm">Tim Marketing</span><b>Harian</b> — isi INPUT_HARIAN: spend & hasil iklan per channel (sebelum PPN), omzet, order & cancel per marketplace.</div></li>
+  <li><div><span class="who tm">Tim Marketing</span><b>Senin</b> — recap minggu lalu terbit di portal: ringkasan vs minggu lalu, ROAS vs target, pacing, dan langkah minggu depan.</div></li>
+  <li><div><span class="who tm">Tim Marketing</span><b>Awal bulan</b> — isi INPUT_BULANAN & SKU; tab SCORECARD merangkum bulan lalu.</div></li>
+ </ol>
+ <h3>Definisi yang dipakai</h3>
+ <ul class="rules"><li><b>Omzet</b> = nilai pesanan siap dikirim; cancel dicatat terpisah lalu dikurangkan.</li><li><b>Spend</b> = angka dashboard iklan sebelum PPN.</li><li><b>ROAS</b> = GMV iklan ÷ spend. <b>MER</b> = omzet bersih ÷ seluruh biaya marketing.</li></ul>
+</div></details>
+
+<details class="ar"><summary><span class="no">2</span><span class="tt"><b>Request konten</b><small>Brief → produksi → upload → penilaian</small></span><span class="st aktif">Aktif</span><span class="chev">▾</span></summary><div class="bd">
+ <div class="files"><a href="https://docs.google.com/presentation/d/1UMiwrM6agqmZN6pOtQDZskbV4JMMpTR_vMIcl8yUCUk/edit?usp=sharing" target="_blank" rel="noopener">Marketing Content Plan ↗</a><a href="https://docs.google.com/spreadsheets/d/1vZGbhI-567txBXcJVveTCofho9UEL_LUJz_thhSIBbs/edit?usp=sharing" target="_blank" rel="noopener">Content Tracker ↗</a><span>Folder 3. CREATIVES/UPLOAD KONTEN</span><a href="report-konten.html">Performa Konten ↗</a></div>
+ <ol class="steps">
+  <li><div><span class="who tm">Tim Marketing</span>Susun brief per batch di Marketing Content Plan: 1 slide = 1 brief (hook, script per detik, klaim wajib & dilarang, link folder upload).</div></li>
+  <li><div><span class="who nu">Approver Nurilab</span>Setujui / beri revisi brief sebelum produksi.</div></li>
+  <li><div><span class="l"><span class="who kr">Kreator / tim konten</span>Produksi, lalu upload file HD ke folder kode brief.</span><span class="l">Nama file: <b>KODE_nama-kreator</b> (mis.</span><span class="l">CPAS-01_dinda.mp4).</span></div></li>
+  <li><div><span class="l"><span class="who kr">Kreator / tim konten</span>Isi 1 baris di tab KONTEN (kolom biru).</span><span class="l">Varian dari brief yang sama pakai huruf: CPAS-01b, CPAS-01c.</span></div></li>
+  <li><div><span class="who tm">Tim Marketing</span>Iklankan, lalu isi tanggal mulai, spend & hasil (kolom oranye).</div></li>
+  <li><div><span class="who au">Otomatis</span>Status terisi setelah masa uji (Meta 7 hari, TikTok 14 hari): <b>Winning</b> (hasil ≥ minimum & biaya per hasil ≤ KPI) · Mediocre · Bad.</div></li>
+  <li><div><span class="who tm">Tim Marketing</span>Konten Winning disimpan di folder WINNING dan menjadi dasar brief berikutnya; pola Bad tidak diulang.</div></li>
+ </ol>
+ <div class="note"><span class="l"><b>Klaim:</b> jangan pakai "menyembuhkan", "hilang permanen", "kering dalam 12 jam", "2× lebih cepat", "seefektif Hydroquinone", atau menyebut merek lain.</span><span class="l">Klaim waktu hanya "bantu redakan kemerahan mulai 12 jam*" / "makin kering dalam 48 jam*" dengan keterangan "*uji klinis 22 subjek, hasil bisa berbeda".</span></div>
+</div></details>
+
+<details class="ar"><summary><span class="no">3</span><span class="tt"><b>Manajemen affiliate</b><small>Rekrut → brief & sampel → konten → pilih → boost → reward</small></span><span class="st kerangka">Kerangka</span><span class="chev">▾</span></summary><div class="bd">
+ <div class="files"><a href="analisis-konten.html">Analisis Konten Mingguan ↗</a><span>Performance Report → BOOST_TIKTOK / BOOST_IG</span></div>
+ <ol class="steps">
+  <li><div><span class="who nu">Tim affiliate</span>Rekrut kreator sesuai target (15–34 th, kulit berjerawat); kirim brief singkat + sampel sesuai shade.</div></li>
+  <li><div><span class="who kr">Affiliate</span>Posting video & live di TikTok Shop / Shopee (SOW minimal 2 video); dorong ulasan berfoto.</div></li>
+  <li><div><span class="who tm">Tim Marketing</span>Setiap Senin pilih video winning di Analisis Konten Mingguan.</div></li>
+  <li><div><span class="who tm">Tim Marketing</span>Request boost code video winning di tab BOOST; <span class="who nu">Tim affiliate</span>isi kode & masa berlaku.</div></li>
+  <li><div><span class="who nu">Tim affiliate</span>Kreator yang menang berulang masuk whitelist & program reward.</div></li>
+ </ol>
+ <div class="note">Detail alur (daftar kreator, SOW, sampel, reward) dilengkapi setelah data tim affiliate diterima.</div>
+</div></details>
+
+<details class="ar"><summary><span class="no">4</span><span class="tt"><b>Optimasi campaign</b><small>Aturan naik / tahan / turun budget & campaign day</small></span><span class="st aktif">Aktif</span><span class="chev">▾</span></summary><div class="bd">
+ <div class="files"><span>Performance Report → PLAN · PACING · LOG SHIFTING</span><a href="report-performa.html">Recap Performa ↗</a></div>
+ <h3>Aturan budget (ROAS 3 hari terakhir vs target di PLAN)</h3>
+ <div class="tw"><table><tr><th>Kondisi</th><th>Tindakan</th></tr>
+  <tr><td>≥ 100% target</td><td>Naik +20% per langkah, maksimal 1× per 48 jam, stok cukup ≥ 14 hari</td></tr>
+  <tr><td>80–99% target</td><td>Tahan budget, ganti kreatif yang mulai capek; tunggu 3 hari</td></tr>
+  <tr><td>&lt; 80% target</td><td>Turun −20% per langkah (tidak langsung dipotong setengah); cari penyebab: kreatif, stok, voucher, kompetitor</td></tr>
+  <tr><td>Harga / voucher salah</td><td>Pause saat itu juga</td></tr>
+  <tr><td>Stok satu shade menipis</td><td>Alihkan budget ke shade lain</td></tr></table></div>
+ <h3>Campaign day (10.10, 11.11, 12.12, payday)</h3>
+ <ol class="steps">
+  <li><div><b>H-14</b> — kunci promo, voucher & paket bersama brand; siapkan kreatif khusus; cek stok per shade.</div></li>
+  <li><div><b>H-7</b> — pemanasan: kumpulkan add to cart, konten teaser affiliate, budget naik bertahap.</div></li>
+  <li><div><b>Hari H</b> — budget puncak, tim standby, pantau spend/ROAS/stok berkala, update singkat ke brand.</div></li>
+  <li><div><b>H+1 s/d H+3</b> — retarget yang belum checkout, budget turun bertahap, rekap hasil.</div></li>
+ </ol>
+ <div class="note">Setiap pergeseran budget di dalam platform dicatat di PLAN → LOG SHIFTING (dari mana, ke mana, sinyal/alasan).</div>
+</div></details>
+
+<details class="ar"><summary><span class="no">5</span><span class="tt"><b>KOL</b><small>Story-first: KOL → affiliate → iklan</small></span><span class="st kerangka">Kerangka</span><span class="chev">▾</span></summary><div class="bd">
+ <ol class="steps">
+  <li><div><span class="who nu">Tim KOL</span>KOL membangun cerita produk (relaunch AC 2.0) sesuai brief & klaim aman.</div></li>
+  <li><div><span class="who nu">Tim affiliate</span>Affiliate stitch / repurpose cerita KOL.</div></li>
+  <li><div><span class="who tm">Tim Marketing</span>Konten KOL yang menang diiklankan lewat boost code (tab BOOST_TIKTOK / BOOST_IG).</div></li>
+  <li><div><span class="who nu">Tim KOL</span><span class="who tm">Tim Marketing</span>Biaya, views & penilaian KOL dicatat agar masuk perhitungan MER.</div></li>
+ </ol>
+ <div class="note">Format laporan KOL dilengkapi setelah data KOL diterima.</div>
+</div></details>
+
+<details class="ar"><summary><span class="no">6</span><span class="tt"><b>Budget & top-up saldo</b><small>Plan bulanan → top-up awal bulan → saldo</small></span><span class="st aktif">Aktif</span><span class="chev">▾</span></summary><div class="bd">
+ <div class="files"><span>Performance Report → PLAN · TOPUP_SALDO</span></div>
+ <ol class="steps">
+  <li><div><span class="who tm">Tim Marketing</span><b>H-3</b> — isi PLAN bulan depan: budget per platform (Shopee, TikTok, Meta) + target ROAS, status "Menunggu approval".</div></li>
+  <li><div><span class="who nu">Approver Nurilab</span>Setujui plan (status "Disetujui").</div></li>
+  <li><div><span class="who tm">Tim Marketing</span><b>Tanggal 1</b> — isi sisa saldo Shopee Ads; nominal top-up & jumlah Virtual Account keluar otomatis; buat VA dan kirim angka ke finance.</div></li>
+  <li><div><span class="who nu">Finance</span>Buat formulir pembayaran, tanda tangan, transfer sesuai tenggat yang disepakati.</div></li>
+  <li><div><span class="l"><span class="who tm">Tim Marketing</span>Cek saldo masuk, tandai "Saldo masuk" di log.</span><span class="l">Top-up tambahan hanya bila saldo &lt; 3 hari, dengan alasan tertulis.</span></div></li>
+  <li><div><span class="l"><span class="who nu">Finance</span>Invoice, PPN & rekonsiliasi dikerjakan tim finance.</span><span class="l">TikTok & Meta dibayar kartu kredit.</span></div></li>
+ </ol>
+</div></details>
+
+<div class="foot">Panduan ini diperbarui Tim Marketing setiap ada perubahan alur. Pertanyaan & usulan perubahan disampaikan di grup koordinasi.</div>
+</main>
+<script>
+document.addEventListener("click", e => { const x = e.target.closest("[data-x]"); if (x) document.querySelectorAll("details.ar").forEach(d => d.open = x.dataset.x === "1"); });
+document.getElementById("pdf").onclick = () => { document.querySelectorAll("details.ar").forEach(d => d.open = true); setTimeout(() => window.print(), 150); };
+window.addEventListener("beforeprint", () => document.querySelectorAll("details.ar").forEach(d => d.open = true));
+</script></body></html>
