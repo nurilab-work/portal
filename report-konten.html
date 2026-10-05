@@ -71,6 +71,8 @@ h2{font-size:28px;line-height:1.25;margin:6px 0 6px;color:var(--navy)}
 .filters{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px;align-items:center}
 .filters button{border:1px solid var(--line);background:#fff;border-radius:99px;padding:5px 12px;font:inherit;font-size:12px;font-weight:600;color:var(--muted);cursor:pointer}
 .filters button.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+.kfil{display:flex;gap:6px;margin:4px 0 12px}.kfil button{border:1px solid var(--line);background:#fff;border-radius:99px;padding:6px 14px;font:inherit;font-size:13px;font-weight:700;color:var(--muted);cursor:pointer}
+.kfil button.on{background:var(--navy);color:#fff;border-color:var(--navy)}
 .filters select{font:inherit;font-size:12px;padding:5px 10px;border:1px solid var(--line);border-radius:99px;background:#fff;color:var(--ink)}
 .tbl{overflow:auto;max-height:52vh;background:#fff;border:1px solid var(--line);border-radius:16px}
 table{border-collapse:collapse;width:100%;min-width:820px;font-size:13px}
@@ -138,7 +140,8 @@ const SL = [
    <div class="sheetwrap"><a class="sheet" href="${esc(D.sheet)}" target="_blank" rel="noopener">Buka Content Tracker ↗</a><p>Data lengkap per konten (Google Sheets)</p></div>`},
  {t:"Progress brief", html:() => `<div class="kicker">Progress brief</div><h2>Brief & konten yang sudah masuk</h2>
    <p class="sub">Konten terupload dibanding target per brief, beserta jumlah yang sudah menang.</p>
-   <div class="briefs">${tb.map(b => `<div class="card bf"><div class="code">${esc(b.code)}</div><div><div class="t">${esc(b.sku)}</div><div class="m">${esc(b.camp)} · ${esc(b.template)}</div></div>
+   <div class="kfil">${[["VID","Video"],["IMG","Static image"]].map(([k, l], i) => `<button data-k="${k}" class="${i ? "" : "on"}">${l} (${tb.filter(b => (b.code.startsWith("IMG") ? "IMG" : "VID") === k).length})</button>`).join("")}</div>
+   <div class="briefs">${tb.map(b => `<div class="card bf" data-k="${b.code.startsWith("IMG") ? "IMG" : "VID"}"${b.code.startsWith("IMG") ? ' style="display:none"' : ""}><div class="code">${esc(b.code)}</div><div><div class="t">${esc(b.sku)}</div><div class="m">${esc(b.camp)} · ${esc(b.template)}</div></div>
     <div class="pb"><i style="width:${Math.min(100, b.quota ? b.uploaded / b.quota * 100 : 0)}%"></i></div>
     <div class="f"><span>${b.uploaded}/${b.quota} konten · ${esc(b.deadline)}</span><span>${b.winning ? `<span class="st Winning">${b.winning} winning</span>` : ""}</span></div></div>`).join("")}</div>
    ${means(lag.length ? `${tb.length - lag.length} dari ${tb.length} brief sudah lengkap. Brief yang masih kurang: <b>${lag.map(b => esc(b.code)).join(", ")}</b>.` : "Semua brief aktif sudah terpenuhi.")}`},
@@ -185,6 +188,8 @@ const N = SL.length; let cur = 0;
 $("#main").innerHTML = SL.map((s, i) => `<section class="s" id="s${i}">${s.html()}</section>`).join("");
 $("#dots").innerHTML = SL.map((s, i) => `<button data-go="${i}">${i + 1} · ${s.t}</button>`).join("");
 fillTable();
+document.addEventListener("click", e => { const b = e.target.closest(".kfil button"); if (!b) return; const k = b.dataset.k, box = b.closest(".kfil").parentElement;
+  box.querySelectorAll(".kfil button").forEach(x => x.classList.toggle("on", x === b)); box.querySelectorAll(".briefs .bf").forEach(c => c.style.display = c.dataset.k === k ? "" : "none"); });
 document.querySelectorAll(".filters button").forEach(b => b.onclick = () => { fSt = b.dataset.st; document.querySelectorAll(".filters button").forEach(x => x.classList.toggle("on", x === b)); fillTable(); });
 $("#fc").onchange = e => { fCamp = e.target.value; fillTable(); };
 function go(i){ cur = Math.max(0, Math.min(N - 1, i));
