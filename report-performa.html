@@ -153,7 +153,7 @@ const ITEMS = {"Semua platform":{}, Shopee:{sp:["Shopee Ads"], g:["Shopee Ads"],
 const planOf = s => D.plan[new Date(s + "T00:00:00").getMonth() + 1] || null;
 function rule(p, endDay){ const pl = planOf(endDay); if (!pl) return {k:"na", t:"Belum ada target"};
   const t = tgtOf(pl, p), a = agg(addD(endDay, -2), endDay).P[p]; if (!t || !isFinite(a.roas)) return {k:"na", t:"Belum ada data"};
-  const r = a.roas / t; return r >= 1 ? {k:"naik", t:"Naik +20%", r, a:a.roas, tg:t} : r >= .8 ? {k:"tahan", t:"Tahan · ganti kreatif", r, a:a.roas, tg:t} : {k:"turun", t:"Turun −20%", r, a:a.roas, tg:t}; }
+  const r = a.roas / t; return r >= 1 ? {k:"naik", t:"Naik +20%", r, a:a.roas, tg:t} : r >= .8 ? {k:"tahan", t:"Tahan · refresh/update konten", r, a:a.roas, tg:t} : {k:"turun", t:"Turun −20%", r, a:a.roas, tg:t}; }
 const means = arr => `<div class="means"><b>Insight</b>${arr.map(s => `<span>${s}</span>`).join("")}</div>`;
 
 // ---------- chart helpers ----------
@@ -305,7 +305,7 @@ function roas(p){ const ws = WEEKS.slice(Math.max(0, wi - 7), wi + 1), v = ws.ma
   lineChart($("#c-roas"), {labels:ws.map(w => dd(w.a)), tips:ws.map(w => `Minggu ${dd(w.a)} – ${dd(w.b)}`), series:[{n:"ROAS " + nm, c:col, tc:p === "TikTok" ? "#9fb4ff" : col, v, dots:true}, {n:"Target plan", c:"#6b7385", tc:"#cfd4e0", w:2, v:tg, dash:true}], fmt:v => x2(v), zero:false});
   $("#l-roas").innerHTML = `<span><i class="ln" style="background:${col}"></i>ROAS ${nm} per minggu</span><span><i class="ln" style="background:repeating-linear-gradient(90deg,#6b7385 0 5px,transparent 5px 9px)"></i>Target plan</span>`;
   const r = rule(p, W().b);
-  $("#m-roas").innerHTML = `<div style="margin-top:10px">Saran minggu ini: <span class="badge b-${r.k}">${r.t}</span></div>` + means([r.k === "na" ? "Belum ada target untuk bulan ini." : `ROAS 3 hari terakhir ${x2(r.a)} = ${pc(r.r)} dari target ${x2(r.tg)}.`, p === "All" ? "Target blended = proyeksi GMV iklan ÷ total budget di PLAN." : "Aturan: ≥100% naik +20% (maks 1× / 48 jam, stok ≥14 hari) · 80–99% tahan & ganti kreatif · <80% turun −20%."]); }
+  $("#m-roas").innerHTML = `<div style="margin-top:10px">Saran minggu ini: <span class="badge b-${r.k}">${r.t}</span></div>` + means([r.k === "na" ? "Belum ada target untuk bulan ini." : `ROAS 3 hari terakhir ${x2(r.a)} = ${pc(r.r)} dari target ${x2(r.tg)}.`, p === "All" ? "Target blended = proyeksi GMV iklan ÷ total budget di PLAN." : "Aturan: ≥100% naik +20% (maks 1× / 48 jam, stok ≥14 hari) · 80–99% tahan & refresh/update konten · <80% turun −20%."]); }
 let spK = "Semua platform";
 function spDetail(){ const c = cur(), p = prev(), el = $("#spbody");
   if (spK === "Semua platform"){ const ks = Object.keys(PLAT), mx = Math.max(...ks.flatMap(k => [c.P[k].sp, p ? p.P[k].sp : 0]), 1);
