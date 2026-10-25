@@ -32,6 +32,15 @@
   .btn{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;border-radius:999px;padding:8px 16px;background:var(--orange);color:#fff;align-self:flex-start;transition:.15s}
   .btn:hover{background:#d95a12}
   .btn:focus-visible{outline:3px solid rgba(242,107,29,.35);outline-offset:2px}
+  .arsip{border-top:1px solid var(--line);padding-top:10px}
+  .arsip summary{cursor:pointer;font-size:13px;font-weight:700;color:var(--navy);list-style:none}
+  .arsip summary::-webkit-details-marker{display:none}
+  .arsip summary::before{content:'+ ';color:var(--orange)}
+  .arsip[open] summary::before{content:'− '}
+  .arsip a{display:block;font-size:13px;color:var(--ink);padding:8px 10px;margin-top:6px;border-radius:10px;background:var(--page)}
+  .arsip a:hover{background:#eceef3}
+  .arsip a b{color:var(--navy)}
+  .arsip a span{display:block;font-size:12px;color:var(--gray);margin-top:2px}
   footer{padding:16px 32px;font-size:12px;color:var(--gray);text-align:center}
   @media(max-width:600px){header{padding:14px 16px}main{padding:22px 14px}.name{font-size:16px}}
 </style>
@@ -70,21 +79,15 @@
       <p class="desc">Ukuran pasar obat totol jerawat, posisi kompetitor, dan skenario menuju Rp2 M per bulan.</p>
       <span class="btn">Lihat laporan →</span>
     </a>
-    <a class="card" href="week3oktober.html">
-      <div class="top"><div class="logo" style="background:#2B48B8">DECK</div><div><div class="name">Weekly Meeting Deck</div><div class="sub">Week 3 Oktober · 19 Okt 2026</div></div></div>
+    <div class="card">
+      <div class="top"><div class="logo" style="background:#2B48B8">DECK</div><div><div class="name">Weekly Meeting Deck</div><div class="sub">Terbaru: Week 3 Oktober · 19 Okt 2026</div></div></div>
       <p class="desc">Performa 11–17 Okt, Shopee tengah bulan, iklan Meta &amp; landing page baru, CPAS gelombang 2, dan persiapan payday 25 Okt.</p>
-      <span class="btn">Buka deck →</span>
-    </a>
-    <a class="card" href="week2oktober.html">
-      <div class="top"><div class="logo" style="background:#2B48B8">DECK</div><div><div class="name">Weekly Meeting Deck</div><div class="sub">Week 2 Oktober · 12 Okt 2026</div></div></div>
-      <p class="desc">Performa 5–10 Okt &amp; efek 10.10, iklan Meta baru, temuan yang perlu dibenahi, dan persiapan 11.11.</p>
-      <span class="btn">Buka deck →</span>
-    </a>
-    <a class="card" href="week1oktober.html">
-      <div class="top"><div class="logo" style="background:#2B48B8">DECK</div><div><div class="name">Weekly Meeting Deck</div><div class="sub">Week 1 Oktober · 5 Okt 2026</div></div></div>
-      <p class="desc">Progres minggu pertama: data September &amp; 7 hari terakhir, analisis konten affiliate, brief Oktober, dan rencana SEO.</p>
-      <span class="btn">Buka deck →</span>
-    </a>
+      <a class="btn" href="week3oktober.html">Buka deck terbaru →</a>
+      <details class="arsip"><summary>Deck sebelumnya (2)</summary>
+        <a href="week2oktober.html"><b>Week 2 Oktober</b> · 12 Okt 2026<span>Performa 5–10 Okt &amp; efek 10.10, iklan Meta baru, persiapan 11.11</span></a>
+        <a href="week1oktober.html"><b>Week 1 Oktober</b> · 5 Okt 2026<span>Data September, analisis konten affiliate, brief Oktober, rencana SEO</span></a>
+      </details>
+    </div>
   </div>
 </div></main>
 
